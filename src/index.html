@@ -1,36 +1,64 @@
 <!DOCTYPE html>
-<html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Filmoteka</title>
+<html lang="en">
 
-    <link
-      rel="shortcut icon"
-      href="./images/logo.png"
-      type="image/png"
-    />
-    
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="./styles.css">
+  <title>Filmoteka</title>
 
-  <body>
-    <div class="wrapper">
-      <!-- header -->
-      //= ./html/header.html
+</head>
 
-      <main>
-        <!-- prettier-ignore -->
-        //= ./html/main.html
-      </main>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <div class="logo-container">
+        <a class="header__logo-link" href="#">
+          <p class="header__logo-text">Filmoteka</p>
+          <img class="header__logo-img" src="" alt="">
+        </a>
+      </div>
+      <div class="section-container">
+        <a class="header__home-link" href="#">HOME</a>
+        <a class="header__lib-link" href="#">MY LIBRARY</a>
+      </div>
 
-      <!-- footer -->
-      <!-- prettier-ignore -->
-      //= ./html/footer.html
     </div>
+    <form class="header__form" action="">
+      <input class="header__form-input" type="text" placeholder="Write movie name and click Enter" autofocus>
+    </form>
+  </header>
 
-    <!-- Сюда будет вставлена ссылка на файл скриптов -->
-    <!-- inject:js -->
-    <!-- endinject -->
-  </body>
+  <main class="main">
+    <ul class="movie-list">
+      <li class="movie-list__item">
+        <p class="movie-list__item-text">Movie Name (2020)</p>
+      </li>
+      <li class="movie-list__item">
+        <p class="movie-list__item-text">Movie Name (2020)</p>
+      </li>
+      <li class="movie-list__item">
+        <p class="movie-list__item-text">Movie Name (2020)</p>
+      </li>
+      <li class="movie-list__item">
+        <p class="movie-list__item-text">Movie Name (2020)</p>
+      </li>
+      <li class="movie-list__item">
+        <p class="movie-list__item-text">Movie Name (2020)</p>
+      </li>
+      <li class="movie-list__item">
+        <p class="movie-list__item-text">Movie Name (2020)</p>
+      </li>
+    </ul>
+  </main>
+
+  <footer>
+    <div class="footer-conteiner">
+      <p class="footer__text">Made by XXX</p>
+    </div>
+  </footer>
+
+</body>
+
 </html>
