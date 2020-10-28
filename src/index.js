@@ -31,6 +31,3 @@ searchForm.addEventListener('submit', event => {
   form.reset();
   fetchPopularMoviesList(inputValue).then(updateMovieMarkUp);
 }); 
-
-
-
