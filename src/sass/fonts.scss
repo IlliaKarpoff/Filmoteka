@@ -1,32 +1,28 @@
-/* montserrat-regular - latin_cyrillic */
 @font-face {
-  font-family: 'Montserrat';
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
-  src: local('Montserrat Regular'), local('Montserrat-Regular'),
-    url('../fonts/montserrat-v14-latin_cyrillic-regular.woff2') format('woff2'),
-    /* Chrome 26+, Opera 23+, Firefox 39+ */
-      url('../fonts/montserrat-v14-latin_cyrillic-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: local('Roboto'), local('Roboto-Regular'),
+    url('../fonts/roboto-v20-latin-regular.woff2') format('woff2'),
+    url('../fonts/roboto-v20-latin-regular.woff') format('woff');
 }
-/* montserrat-500 - latin_cyrillic */
+
 @font-face {
-  font-family: 'Montserrat';
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
-  src: local('Montserrat Medium'), local('Montserrat-Medium'),
-    url('../fonts/montserrat-v14-latin_cyrillic-500.woff2') format('woff2'),
-    /* Chrome 26+, Opera 23+, Firefox 39+ */
-      url('../fonts/montserrat-v14-latin_cyrillic-500.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: local('Roboto Medium'), local('Roboto-Medium'),
+    url('../fonts/roboto-v20-latin-500.woff2') format('woff2'),
+    url('../fonts/roboto-v20-latin-500.woff') format('woff');
 }
-/* montserrat-600 - latin_cyrillic */
+
 @font-face {
-  font-family: 'Montserrat';
+  font-family: 'Roboto';
   font-style: normal;
-  font-weight: 600;
-  src: local('Montserrat SemiBold'), local('Montserrat-SemiBold'),
-    url('../fonts/montserrat-v14-latin_cyrillic-600.woff2') format('woff2'),
-    /* Chrome 26+, Opera 23+, Firefox 39+ */
-      url('../fonts/montserrat-v14-latin_cyrillic-600.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  font-weight: 700;
+  src: local('Roboto Bold'), local('Roboto-Bold'),
+    url('../fonts/roboto-v20-latin-700.woff2') format('woff2'),
+    url('../fonts/roboto-v20-latin-700.woff') format('woff');
 }
 /* montserrat-700 - latin_cyrillic */
 @font-face {
