@@ -1,0 +1,37 @@
+<li class="movie-list__item">
+    <img src="{{backdrop_path}}" alt="{{original_title}}">
+    <p class="movie-list__item-text">{{original_title}} ({{release_date}})</p>
+</li>
+
+<article class="film-card">
+    <img class="film-poster" src="{{poster_path}}" alt="{{original_title}}" width="272" height="402">
+    <!-- вставить рис.768пх width="356" height="524" -->
+    <!-- вставить рис.1024пх width="428" height="630" -->
+    <div class="data-wrapper">
+        <h2 class="film-title">{{original_title}} ({{release_date}})</h2>
+        <table class="film-table">
+            <tr class="film-data">
+                <td>vote / votes</td>
+                <td>{{vote_average}} / {{vote_count}}</td>
+            </tr>
+            <tr class="film-data">
+                <td>popularity</td>
+                <td>{{popularity}}</td>
+            </tr>
+            <tr class="film-data">
+                <td>original title</td>
+                <td>{{original_title}}</td>
+            </tr>
+            <tr class="film-data">
+                <td>genre</td>
+                <td>{{genre_ids}}</td>
+            </tr>
+        </table>
+        <h3 class="film-description-heading">About</h3>
+        <p class="film-description">{{overview}}</p>
+        <button class="button addToWatchedBtn" type="button"><span class="addToLibIconVideo"></span> Add to
+            watched</button>
+        <button class="button addToQueueBtn" type="button"><span class="addToLibIconCalendar"></span> Add to
+            queue</button>
+    </div>
+</article>
