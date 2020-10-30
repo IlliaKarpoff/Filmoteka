@@ -1,36 +1,43 @@
 import './sass/main.scss';
 import updateMovieMarkUp from './js/updateMovieMarkUp';
-import fetchPopularMoviesList from './js/fetchPopularMoviesList';
-
-// import fetchPopularMoviesList from './js/fetchPopularMoviesList';
+import searchAndPaginationHomePage from './js/searchAndPaginationHomePage';
 
 const searchForm = document.querySelector('.header__form');
 const moviesContainer = document.querySelector('.movie-list');
 
-// searchForm.addEventListener('submit', searchFormHandler);
-// function searchFormHandler(event) {
-//   event.preventDefault();
-//   // console.log(event);
-//   // console.dir(event.target);
-//   // console.dir(event.currentTarget);
-//   // console.dir(event.target.elements);
-//   // console.dir(event.target.children.value);
-//   const form = event.currentTarget;
-//   console.dir(form);
-//   fetchPopularMoviesList.query = form.elements.query.value;
-//   console.dir(fetchPopularMoviesList.query);
-// }
+searchForm.addEventListener('submit', fetchHomePage)
 
-searchForm.addEventListener('submit', event => {
+function fetchHomePage() {
   event.preventDefault();
 
   const form = event.currentTarget;
-  const inputValue = form.elements.query.value;
+  searchAndPaginationHomePage.query = form.elements.query.value;
   
   moviesContainer.innerHTML = '';
   form.reset();
-  fetchPopularMoviesList(inputValue).then(updateMovieMarkUp);
-}); 
 
+  searchAndPaginationHomePage.resetPage();
 
+  searchAndPaginationHomePage.fetchPopularMoviesList().then(results => {
+    updateMovieMarkUp(results);
+  });
+}
 
+const prevBtn = document.querySelector('[data-action="prev"]');
+const nextBtn = document.querySelector('[data-action="next"]');
+
+nextBtn.addEventListener('click', nextBtnHandler);
+prevBtn.addEventListener('click', prevBtnHandler);
+
+function nextBtnHandler() {
+  searchAndPaginationHomePage.fetchPopularMoviesList().then(results => {
+    updateMovieMarkUp(results);
+    searchAndPaginationHomePage.incrementPage();
+  });
+};
+function prevBtnHandler() {
+  searchAndPaginationHomePage.fetchPopularMoviesList().then(results => {
+    updateMovieMarkUp(results);
+    searchAndPaginationHomePage.decrementPage();
+  });
+};

@@ -1,6 +1,6 @@
 {{#each this}}
 <li class="movie-list__item">
-  <img src="{{backdrop_path}}" alt="{{original_title}}">
+  <img class="movie-list__item-img" src="https://image.tmdb.org/t/p/original{{backdrop_path}}" alt="{{original_title}}">
   <p class="movie-list__item-text">{{original_title}} ({{release_date}})</p>
 </li>
 {{/each}}
