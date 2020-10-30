@@ -1,9 +1,10 @@
-import filmDetailsPageTemplate from '../templates/detailsPage.hbs';
+import detailsPageTpl from '../templates/detailsPage.hbs';
 
+const detailsPage = document.querySelector('#detailsPage');
 
-const templating = (results) => {
-  const detailsPage = document.querySelector('#detailsPage');
-  detailsPage.insertAdjacentHTML('beforeend', filmDetailsPageTemplate(results));
+function updateDetailsPageMarkUp(result) {
+  const markUp = detailsPageTpl(result); 
+  detailsPage.insertAdjacentHTML('beforeend', markUp);
 };
 
-export default templating;
+export default updateDetailsPageMarkUp;

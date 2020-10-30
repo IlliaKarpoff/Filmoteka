@@ -1,6 +1,9 @@
 import './sass/main.scss';
 import updateMovieMarkUp from './js/updateMovieMarkUp';
 import fetchPopularMoviesList from './js/fetchPopularMoviesList';
+import handleOpenDetails from './js/4filmDetailsPage';
+import updateDetailsPageMarkUp from './js/templating';
+// import refs from './js/refs';
 
 // import fetchPopularMoviesList from './js/fetchPopularMoviesList';
 
@@ -31,3 +34,5 @@ searchForm.addEventListener('submit', event => {
   form.reset();
   fetchPopularMoviesList(inputValue).then(updateMovieMarkUp);
 }); 
+
+moviesContainer.addEventListener('click', handleOpenDetails);

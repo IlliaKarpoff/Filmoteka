@@ -1,5 +1,17 @@
+import updateDetailsPageMarkUp from './templating';
+import fetchMovieByID from './fetchMovieByID';
 
+const homePage = document.querySelector('#homePage');
 
+const handleOpenDetails = (event) => {
+    if (event.target.nodeName !== 'IMG') { return }
+    const id = event.target.dataset.id;
+    console.log(id);
+    homePage.classList.add('is-hidden');
+    fetchMovieByID(id).then(updateDetailsPageMarkUp)
+};
+
+export default handleOpenDetails;
 
 
 // const selectFilm

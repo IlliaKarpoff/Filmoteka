@@ -53,27 +53,30 @@
   text-align: left;
   margin-bottom: 40px;
 }
-.addToLibBtn {
+.button {
+  margin: 10px;
   padding: 10px;
+  display: inline-flex;
   text-align: center;
   background-color: transparent;
   border: none;
 }
-.addToLibBtn:hover {
+.button:hover {
   outline: none;
   border: solid 1px #77c1bb;
   cursor: pointer;
 }
 button > span {
+  margin-right: 5px;
   width: 16px;
   height: 16px;
-  display: inline-block;
+  display: block;
   background-repeat: no-repeat;
 }
-.addToLibIconCalendar {
+.addToQueueIcon {
   background-image: url(./src/images/calendar-queue.png);
 }
-.addToLibIconVideo {
+.addToWatchedIcon {
   background-image: url(./src/images/video-watched.png);
 }
 
