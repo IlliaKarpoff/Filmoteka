@@ -10,15 +10,7 @@ const openLib = (event) =>{
   refs.main.classList.add('hidden');
 
   console.log("показываем кнопки");
-  // const homePage = document.querySelector('#homePage');
-  // homePage.classList.add('is-hidden');
 
-// const openLib = (event) => {
-//     if (event.target.nodeName !== 'IMG') { return }
-//     const id = event.target.dataset.id;
-//     console.log(id);
-//     homePage.classList.add('is-hidden');
-//     fetchMovieByID(id).then(updateDetailsPageMarkUp)
 };
 
 export default openLib;

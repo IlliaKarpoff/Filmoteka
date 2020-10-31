@@ -1,11 +1,8 @@
 import './sass/main.scss';
 import updateMovieMarkUp from './js/updateMovieMarkUp';
 import handleOpenDetails from './js/4filmDetailsPage';
-<<<<<<< HEAD
 import updateDetailsPageMarkUp from './js/templating';
 import openLib from './js/5libraryPage';
-=======
->>>>>>> dev
 // import refs from './js/refs';
 // import fetchPopularMoviesList from './js/fetchPopularMoviesList';
 import searchAndPaginationHomePage from './js/searchAndPaginationHomePage';
@@ -62,12 +59,9 @@ function prevBtnHandler() {
   // pageBtn.textContent = searchAndPaginationHomePage.pageNumber;
 };
 
-<<<<<<< HEAD
 refs.lib.addEventListener('click', openLib);
-=======
 searchForm.addEventListener('submit', fetchHomePage);
 nextBtn.addEventListener('click', nextBtnHandler);
 prevBtn.addEventListener('click', prevBtnHandler);
 moviesContainer.addEventListener('click', handleOpenDetails);
 homeRef.addEventListener('click', dublyazhKoda);
->>>>>>> dev
