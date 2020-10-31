@@ -25,5 +25,3 @@ const openLib = (event) =>{
   console.log("показываем кнопки");
 };
 export default openLib;
-
-
