@@ -21,6 +21,7 @@ export default {
     this.pageNumber += 1;
   },
   decrementPage() {
+    if (this.pageNumber === 1) return;
     this.pageNumber -= 1;
   },
   get query() {
