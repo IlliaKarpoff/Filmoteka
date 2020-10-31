@@ -1,9 +1,12 @@
 import './sass/main.scss';
 import updateMovieMarkUp from './js/updateMovieMarkUp';
 import handleOpenDetails from './js/4filmDetailsPage';
+import updateDetailsPageMarkUp from './js/templating';
+import openLib from './js/5libraryPage';
 // import refs from './js/refs';
 // import fetchPopularMoviesList from './js/fetchPopularMoviesList';
 import searchAndPaginationHomePage from './js/searchAndPaginationHomePage';
+import refs from './js/refs';
 
 const homePage = document.querySelector('#homePage');
 const detailsPage = document.querySelector('#detailsPage');
@@ -56,6 +59,7 @@ function prevBtnHandler() {
   // pageBtn.textContent = searchAndPaginationHomePage.pageNumber;
 };
 
+refs.lib.addEventListener('click', openLib);
 searchForm.addEventListener('submit', fetchHomePage);
 nextBtn.addEventListener('click', nextBtnHandler);
 prevBtn.addEventListener('click', prevBtnHandler);
