@@ -3,10 +3,12 @@ import updateMovieMarkUp from './js/updateMovieMarkUp';
 import fetchPopularMoviesList from './js/fetchPopularMoviesList';
 import handleOpenDetails from './js/4filmDetailsPage';
 import updateDetailsPageMarkUp from './js/templating';
+import openLib from './js/5libraryPage';
 // import refs from './js/refs';
 
 // import fetchPopularMoviesList from './js/fetchPopularMoviesList';
 import searchAndPaginationHomePage from './js/searchAndPaginationHomePage';
+import refs from './js/refs';
 
 const searchForm = document.querySelector('.header__form');
 const moviesContainer = document.querySelector('.movie-list');
@@ -50,3 +52,5 @@ function prevBtnHandler() {
     searchAndPaginationHomePage.decrementPage();
   });
 };
+
+refs.lib.addEventListener('click', openLib);
