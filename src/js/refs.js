@@ -1,17 +1,29 @@
 const refs = {
-  searchForm: document.querySelector('.header__form'),
-  moviesContainer: document.querySelector('.movie-list'),
-  lib: document.querySelector('.header__lib-link'),
-  sectionLib: document.querySelector('.lib'),
-  main: document.querySelector('.main'),
-  homePage: document.querySelector('#homePage'),
+  addToWatchedBtn: detailsPage.querySelector('.addToWatchedBtn'),
+  addToWatchedIcon: detailsPage.querySelector('.addToWatchedIcon'),
+  addToQueueBtn: detailsPage.querySelector('.addToQueueBtn'),
+  addToQueueIcon: detailsPage.querySelector('.addToQueueIcon'),
+  
   detailsPage: document.querySelector('#detailsPage'),
-  prevBtn: document.querySelector('[data-action="prev"]'),
+  homePage: document.querySelector('#homePage'),
+  homeRef: document.querySelector('.header__home-link'),
+  lib: document.querySelector('.header__lib-link'),
+  libraryPage: document.querySelector('#libraryPage'),
+  logoRef: document.querySelector('.logo-container'),
+  main: document.querySelector('.main'),
+  moviesContainer: document.querySelector('.movie-list'),
   nextBtn: document.querySelector('[data-action="next"]'),
   pageBtn: document.querySelector('.btn-number'),
-  homeRef: document.querySelector('.header__home-link'),
-  logoRef: document.querySelector('.logo-container'),
+  prevBtn: document.querySelector('[data-action="prev"]'),
+  sectionLib: document.querySelector('.lib'),
+  searchForm: document.querySelector('.header__form'),
   upButton: document.querySelector('.up-btn'),
+<<<<<<< HEAD
   libList: document.querySelector('.lib-list'),
+=======
+  // кнопки на показ списка очереди фильмов и списка просмотренных со страницы libraryPage
+  // libWatchedBtn
+  // libQueueBtn
+>>>>>>> dev
 }
 export default refs;
