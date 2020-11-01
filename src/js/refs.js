@@ -9,6 +9,7 @@ const refs = {
   homeRef: document.querySelector('.header__home-link'),
   lib: document.querySelector('.header__lib-link'),
   libraryPage: document.querySelector('#libraryPage'),
+  logoRef: document.querySelector('.logo-container'),
   main: document.querySelector('.main'),
   moviesContainer: document.querySelector('.movie-list'),
   nextBtn: document.querySelector('[data-action="next"]'),
@@ -16,6 +17,7 @@ const refs = {
   prevBtn: document.querySelector('[data-action="prev"]'),
   sectionLib: document.querySelector('.lib'),
   searchForm: document.querySelector('.header__form'),
+  upButton: document.querySelector('.up-btn'),
 }
 export default refs;
 

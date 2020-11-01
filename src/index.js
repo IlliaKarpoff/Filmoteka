@@ -12,15 +12,22 @@ import updateDetailsPageMarkUp from './js/templating';
 import openLib from './js/5libraryPage';
 import searchAndPaginationHomePage from './js/searchAndPaginationHomePage';
 import {activeHomePage} from './js/3navigation';
+import refs from './js/refs';
+import fetchPopularMoviesList from './js/fetchPopularMoviesList';
+import upButtonHandler from './js/upButton';
 
-const homePage = document.querySelector('#homePage');
-const detailsPage = document.querySelector('#detailsPage');
-const searchForm = document.querySelector('.header__form');
-const moviesContainer = document.querySelector('.movie-list');
-const prevBtn = document.querySelector('[data-action="prev"]');
-const nextBtn = document.querySelector('[data-action="next"]');
-const pageBtn = document.querySelector('.btn-number');
-const homeRef = document.querySelector('.header__home-link');
+console.dir(window);
+function createPopularMovieList() {
+  refs.homePage.classList.remove('is-hidden');
+  refs.detailsPage.classList.add('is-hidden');
+  refs.moviesContainer.innerHTML = '';
+  fetchPopularMoviesList()
+    .then(updateMovieMarkUp);
+  refs.nextBtn.classList.remove('is-hidden');
+  refs.pageBtn.textContent = searchAndPaginationHomePage.pageNumber;
+}
+
+createPopularMovieList();
 
 function fetchHomePage(event) {
   event.preventDefault();
@@ -31,42 +38,41 @@ function fetchHomePage(event) {
   form.reset();
   searchAndPaginationHomePage.resetPage();
   activeHomePage();
-  // homePage.classList.remove('is-hidden');
-  // detailsPage.classList.add('is-hidden');
-  // moviesContainer.innerHTML = '';
-  // searchAndPaginationHomePage.fetchPopularMoviesList()
-  // .then(updateMovieMarkUp);
 };
 
-// function activeHomePage() {
-//   homePage.classList.remove('is-hidden');
-//     detailsPage.innerHTML = '';
-//   // detailsPage.classList.add('is-hidden');
-//   moviesContainer.innerHTML = '';
-//   searchAndPaginationHomePage.fetchPopularMoviesList()
-//   .then(updateMovieMarkUp);
-//   pageBtn.textContent = searchAndPaginationHomePage.pageNumber;
-// }
+function activeHomePage() {
+  refs.homePage.classList.remove('is-hidden');
+  refs.detailsPage.classList.add('is-hidden');
+  refs.moviesContainer.innerHTML = '';
+  searchAndPaginationHomePage.fetchSearchMoviesList() 
+    .then(updateMovieMarkUp);
+  refs.nextBtn.classList.remove('is-hidden');
+  refs.pageBtn.textContent = searchAndPaginationHomePage.pageNumber;
+  if (searchAndPaginationHomePage.pageNumber !== 1) {
+    refs.prevBtn.classList.remove('is-hidden')
+  };
+  if (searchAndPaginationHomePage.pageNumber === 1) {
+    refs.prevBtn.classList.add('is-hidden')
+  };
+}
+
 function nextBtnHandler() {
   searchAndPaginationHomePage.incrementPage();
   activeHomePage();
-  // moviesContainer.innerHTML = '';
-  // searchAndPaginationHomePage.fetchPopularMoviesList()
-  // .then(updateMovieMarkUp);
-  // pageBtn.textContent = searchAndPaginationHomePage.pageNumber;
+  createPopularMovieList();
 };
+
 function prevBtnHandler() {
   searchAndPaginationHomePage.decrementPage();
   activeHomePage();
-  // moviesContainer.innerHTML = '';
-  // searchAndPaginationHomePage.fetchPopularMoviesList()
-  // .then(updateMovieMarkUp);
-  // pageBtn.textContent = searchAndPaginationHomePage.pageNumber;
+  createPopularMovieList();
 };
 
 refs.lib.addEventListener('click', openLib);
-searchForm.addEventListener('submit', fetchHomePage);
-nextBtn.addEventListener('click', nextBtnHandler);
-prevBtn.addEventListener('click', prevBtnHandler);
-moviesContainer.addEventListener('click', activeDetailsPage);
-homeRef.addEventListener('click', activeHomePage);
+refs.searchForm.addEventListener('submit', fetchHomePage);
+refs.nextBtn.addEventListener('click', nextBtnHandler);
+refs.prevBtn.addEventListener('click', prevBtnHandler);
+refs.moviesContainer.addEventListener('click', activeDetailsPage);
+refs.homeRef.addEventListener('click', activeHomePage);
+refs.upButton.addEventListener('click', upButtonHandler);
+refs.logoRef.addEventListener('click', createPopularMovieList);

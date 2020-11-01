@@ -2,17 +2,17 @@ import updateDetailsPageMarkUp from './templating';
 import fetchMovieByID from './fetchMovieByID';
 import refs from './refs';
 
-const homePage = document.querySelector('#homePage');
-const detailsPage = document.querySelector('#detailsPage');
+// const homePage = document.querySelector('#homePage');
+// const detailsPage = document.querySelector('#detailsPage');
 
 const activeDetailsPage = (event) => {
     if (event.target.nodeName !== 'IMG') { return }
     refs.searchForm.classList.add('is-hidden');
     const movieId = event.target.dataset.id;
     // console.log(id);
-    detailsPage.innerHTML = '';
-    homePage.classList.add('is-hidden');
-    // detailsPage.classList.remove('is-hidden');
+    refs.detailsPage.innerHTML = '';
+    refs.homePage.classList.add('is-hidden');
+    // refs.detailsPage.classList.remove('is-hidden');
 
     fetchMovieByID(movieId).then(updateDetailsPageMarkUp)
 };
