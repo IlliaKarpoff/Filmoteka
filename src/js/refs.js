@@ -12,5 +12,6 @@ const refs = {
   homeRef: document.querySelector('.header__home-link'),
   logoRef: document.querySelector('.logo-container'),
   upButton: document.querySelector('.up-btn'),
+  libList: document.querySelector('.lib-list'),
 }
 export default refs;
