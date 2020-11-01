@@ -4,17 +4,16 @@
 @import 'vars.scss';
 @import 'mixins.scss';
 
-// :root {
-//   font-size: 62.5%;
-// }
-
-//reset margin from normalize
-// h1 {
-//   margin-top: 0;
-// }
+// reset margin from normalize
+h1 {
+  margin-top: 0;
+}
+.is-hidden {
+  display: none;
+}
 
 // body {
-//   font-family: 'Montserrat', sans-serif;
+//   font-family: 'Roboto', sans-serif;
 //   @include font(20/11, 1.1rem, 400);
 //   color: $main-text;
 //   background-color: #fff;
