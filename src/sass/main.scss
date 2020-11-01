@@ -13,12 +13,17 @@
 //   margin-top: 0;
 // }
 
-// body {
-//   font-family: 'Montserrat', sans-serif;
-//   @include font(20/11, 1.1rem, 400);
-//   color: $main-text;
-//   background-color: #fff;
-// }
+body {
+  position: relative;
+  // font-family: 'Montserrat', sans-serif;
+  // @include font(20/11, 1.1rem, 400);
+  // color: $main-text;
+  // background-color: #fff;
+}
+
+.is-hidden {
+  display: none;
+}
 
 @import 'header.scss';
 @import 'homePage.scss';
