@@ -18,12 +18,10 @@ const refs = {
   sectionLib: document.querySelector('.lib'),
   searchForm: document.querySelector('.header__form'),
   upButton: document.querySelector('.up-btn'),
-<<<<<<< HEAD
   libList: document.querySelector('.lib-list'),
-=======
-  // кнопки на показ списка очереди фильмов и списка просмотренных со страницы libraryPage
-  // libWatchedBtn
-  // libQueueBtn
->>>>>>> dev
+ 
 }
 export default refs;
+ // кнопки на показ списка очереди фильмов и списка просмотренных со страницы libraryPage
+  // libWatchedBtn
+  // libQueueBtn

@@ -23,7 +23,7 @@ function openLib() {
       console.log(results);
 
       const markUp = libPageTempl(results);
-      refs.libList.innerHTML('beforeend', markUp);
+      refs.libList.insertAdjacentHTML('beforeend', markUp);
     }
     ) 
     .catch(error => console.log(error));
