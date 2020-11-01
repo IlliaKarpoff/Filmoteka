@@ -3,20 +3,23 @@ import updateMovieMarkUp from './js/updateMovieMarkUp';
 import handleOpenDetails from './js/4filmDetailsPage';
 import updateDetailsPageMarkUp from './js/templating';
 import openLib from './js/5libraryPage';
-// import refs from './js/refs';
-// import fetchPopularMoviesList from './js/fetchPopularMoviesList';
 import searchAndPaginationHomePage from './js/searchAndPaginationHomePage';
 import refs from './js/refs';
+import fetchPopularMoviesList from './js/fetchPopularMoviesList';
+import upButtonHandler from './js/upButton';
 
-const homePage = document.querySelector('#homePage');
-const detailsPage = document.querySelector('#detailsPage');
-const searchForm = document.querySelector('.header__form');
-const moviesContainer = document.querySelector('.movie-list');
-const prevBtn = document.querySelector('[data-action="prev"]');
-const nextBtn = document.querySelector('[data-action="next"]');
-const pageBtn = document.querySelector('.btn-number');
-const homeRef = document.querySelector('.header__home-link');
+console.dir(window);
+function createPopularMovieList() {
+  refs.homePage.classList.remove('is-hidden');
+  refs.detailsPage.classList.add('is-hidden');
+  refs.moviesContainer.innerHTML = '';
+  fetchPopularMoviesList()
+    .then(updateMovieMarkUp);
+  refs.nextBtn.classList.remove('is-hidden');
+  refs.pageBtn.textContent = searchAndPaginationHomePage.pageNumber;
+}
 
+createPopularMovieList();
 
 function fetchHomePage(event) {
   event.preventDefault();
@@ -26,42 +29,42 @@ function fetchHomePage(event) {
   
   form.reset();
   searchAndPaginationHomePage.resetPage();
-  dublyazhKoda();
-  // homePage.classList.remove('is-hidden');
-  // detailsPage.classList.add('is-hidden');
-  // moviesContainer.innerHTML = '';
-  // searchAndPaginationHomePage.fetchPopularMoviesList()
-  // .then(updateMovieMarkUp);
+  showHomePage();
 };
 
-function dublyazhKoda() {
-  homePage.classList.remove('is-hidden');
-  detailsPage.classList.add('is-hidden');
-  moviesContainer.innerHTML = '';
-  searchAndPaginationHomePage.fetchPopularMoviesList()
-  .then(updateMovieMarkUp);
-  pageBtn.textContent = searchAndPaginationHomePage.pageNumber;
+function showHomePage() {
+  refs.homePage.classList.remove('is-hidden');
+  refs.detailsPage.classList.add('is-hidden');
+  refs.moviesContainer.innerHTML = '';
+  searchAndPaginationHomePage.fetchSearchMoviesList() 
+    .then(updateMovieMarkUp);
+  refs.nextBtn.classList.remove('is-hidden');
+  refs.pageBtn.textContent = searchAndPaginationHomePage.pageNumber;
+  if (searchAndPaginationHomePage.pageNumber !== 1) {
+    refs.prevBtn.classList.remove('is-hidden')
+  };
+  if (searchAndPaginationHomePage.pageNumber === 1) {
+    refs.prevBtn.classList.add('is-hidden')
+  };
 }
+
 function nextBtnHandler() {
   searchAndPaginationHomePage.incrementPage();
-  dublyazhKoda();
-  // moviesContainer.innerHTML = '';
-  // searchAndPaginationHomePage.fetchPopularMoviesList()
-  // .then(updateMovieMarkUp);
-  // pageBtn.textContent = searchAndPaginationHomePage.pageNumber;
+  showHomePage();
+  createPopularMovieList();
 };
+
 function prevBtnHandler() {
   searchAndPaginationHomePage.decrementPage();
-  dublyazhKoda();
-  // moviesContainer.innerHTML = '';
-  // searchAndPaginationHomePage.fetchPopularMoviesList()
-  // .then(updateMovieMarkUp);
-  // pageBtn.textContent = searchAndPaginationHomePage.pageNumber;
+  showHomePage();
+  createPopularMovieList();
 };
 
 refs.lib.addEventListener('click', openLib);
-searchForm.addEventListener('submit', fetchHomePage);
-nextBtn.addEventListener('click', nextBtnHandler);
-prevBtn.addEventListener('click', prevBtnHandler);
-moviesContainer.addEventListener('click', handleOpenDetails);
-homeRef.addEventListener('click', dublyazhKoda);
+refs.searchForm.addEventListener('submit', fetchHomePage);
+refs.nextBtn.addEventListener('click', nextBtnHandler);
+refs.prevBtn.addEventListener('click', prevBtnHandler);
+refs.moviesContainer.addEventListener('click', handleOpenDetails);
+refs.homeRef.addEventListener('click', showHomePage);
+refs.upButton.addEventListener('click', upButtonHandler);
+refs.logoRef.addEventListener('click', createPopularMovieList);
