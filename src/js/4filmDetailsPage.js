@@ -7,12 +7,11 @@ import refs from './refs';
 
 const activeDetailsPage = (event) => {
     if (event.target.nodeName !== 'IMG') { return }
+    // refs.detailsPage.innerHTML = '';
     refs.searchForm.classList.add('is-hidden');
     const movieId = event.target.dataset.id;
-    // console.log(id);
-    refs.detailsPage.innerHTML = '';
+    console.log('movieId', movieId);
     refs.homePage.classList.add('is-hidden');
-    // refs.detailsPage.classList.remove('is-hidden');
 
     fetchMovieByID(movieId).then(updateDetailsPageMarkUp)
 };
