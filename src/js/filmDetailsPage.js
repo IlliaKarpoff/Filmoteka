@@ -1,17 +1,15 @@
 import updateDetailsPageMarkUp from './templating';
 import fetchMovieByID from './fetchMovieByID';
 import refs from './refs';
-
-// const homePage = document.querySelector('#homePage');
-// const detailsPage = document.querySelector('#detailsPage');
  
 const handleOpenDetails = (event) => {
     if (event.target.nodeName !== 'IMG') { return }
     const id = event.target.dataset.id;
     // console.log(id);
-    refs.detailsPage.innerHTML = '';
-    refs.homePage.classList.add('is-hidden');
-    refs.detailsPage.classList.remove('is-hidden');
+    // refs.detailsPage.innerHTML = '';
+    refs.moviesContainer.innerHTML = '';
+    refs.popularPage.innerHTML = '';
+    refs.btnContainer.classList.add('is-hidden');
 
     fetchMovieByID(id).then(updateDetailsPageMarkUp)
 };

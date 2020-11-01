@@ -1,4 +1,5 @@
-import refs from './refs'
+import refs from './refs';
+import pageRender from './pageRender';
 
 const apiKey = "2e7ddd707cda482bd62363d7d16dcf77";
 
@@ -28,10 +29,21 @@ export default {
   incrementPage() {
     this.pageNumber += 1;
   },
+  nextBtnHandler() {
+  // if (inputValue = null) {
+  //   createPopularMovieList();
+  // }
+  incrementPage();
+  pageRender.showHomePage();
+},
   decrementPage() {
     if (this.pageNumber === 1) return;
     this.pageNumber -= 1;
   },
+  prevBtnHandler() {
+  decrementPage();
+  pageRender.showHomePage();
+},
   get query() {
     return this.inputValue;
   },

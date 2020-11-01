@@ -1,6 +1,6 @@
-// const upButton = document.querySelector('.up-btn');
+const upButton = document.querySelector('.up-btn');
 function upButtonHandler() {
-  //  if (document.documentElement.offsetHeight > document.documentElement.clientHeight) {
+  //  if (window.scrollTo) {
   //   upButton.classList.remove('is-hidden');
   // }
   window.scrollTo({
