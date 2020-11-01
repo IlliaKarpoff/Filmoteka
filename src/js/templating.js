@@ -8,4 +8,4 @@ function updateDetailsPageMarkUp(result) {
   refs.detailsPage.insertAdjacentHTML('beforeend', markUp);
 };
 
-export default updateDetailsPageMarkUp;
+export default updateDetailsPageMarkUp; 
