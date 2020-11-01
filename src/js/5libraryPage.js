@@ -14,11 +14,12 @@ import refs from './refs';
 function openLib() {
   // refs.homePage.classList.remove('is-hidden');
   refs.detailsPage.classList.add('is-hidden');
-  // refs.moviesContainer.innerHTML = '';
+  refs.moviesContainer.innerHTML = '';
   const apiKey = "2e7ddd707cda482bd62363d7d16dcf77";
   // const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en&page=1`;
-  const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&primary_release_year=2010&sort_by=vote_average.desc`;
-  // /discover/movie?primary_release_year=2010&sort_by=vote_average.desc
+  // const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&primary_release_year=2010&sort_by=vote_average.desc`;
+  const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=18&primary_release_year=2014`;
+
   fetch(url)
   .then(response => response.json())
     .then(({ results }) => {
