@@ -1,8 +1,8 @@
 
-import fetchMovieTpl from '../templates/fetchMovie.hbs';
-import fetchMovieByID from './fetchMovieByID';
-import updateDetailsPageMarkUp from './templating';
-import refs from './refs';
+// import fetchMovieTpl from '../templates/fetchMovie.hbs';
+// import fetchMovieByID from './fetchMovieByID';
+// import updateDetailsPageMarkUp from './templating';
+// import refs from './refs';
 
 
 // const openLib = (event) =>{
@@ -14,24 +14,24 @@ import refs from './refs';
 // };
 
 
-function openLib() {
-  const apiKey = "2e7ddd707cda482bd62363d7d16dcf77";
-  fetchList() {
-    const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en&query=${this.searchQuery}&page=${this.pageNumber}`
-    // const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en&/discover/movie/?certification_country=US&certification=R&sort_by=vote_average.desc`;
-      fetch(url)
-      .then(response => response.json())
-      .then(({ results }) => {
-        console.log(results);
-      // const markUp = fetchMovieTpl(results); 
-      // refs.libList.insertAdjacentHTML('beforeend', markUp);
-      })
-  }
-  // function updatelibery(results) {
+// function openLib() {
+//   const apiKey = "2e7ddd707cda482bd62363d7d16dcf77";
+//   fetchList() {
+//     const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en&query=${this.searchQuery}&page=${this.pageNumber}`;
+//     // const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en&/discover/movie/?certification_country=US&certification=R&sort_by=vote_average.desc`;
+//       fetch(url)
+//       .then(response => response.json())
+//       .then(({ results }) => {
+//         console.log(results);
+//       // const markUp = fetchMovieTpl(results); 
+//       // refs.libList.insertAdjacentHTML('beforeend', markUp);
+//       })
+//   }
+//   // function updatelibery(results) {
     
-  // };
+//   // };
 
-} 
+// } 
 //     .catch(error => console.log(error));
 //     }
 //     function updateDetailsPageMarkUp(result) {
@@ -40,7 +40,7 @@ function openLib() {
 //     };
 // }
 
-export default openLib;
+// export default openLib;
 // export default openLib;
 
 // refs.input.addEventListener('submit', event => {
