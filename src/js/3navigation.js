@@ -1,21 +1,32 @@
 import refs from './refs';
 import searchAndPaginationHomePage from './searchAndPaginationHomePage';
-// './js/searchAndPaginationHomePage';
-// import searchAndPaginationHomePage from './searchAndPaginationHomePage';
 import updateMovieMarkUp from './updateMovieMarkUp';
 import {nextBtnHandler, prevBtnHandler} from '../index';
 
 // - создаем глобальную переменную selectFilm; 
-let selectFilm = {};
+export let selectFilm = {
+  id: 1, 
+  // _backdrop_path: 1,
+  // get backdrop_path() {
+  //   return this._backdrop_path;
+  // },
+  // set backdrop_path(value) {
+  //   this._backdrop_path = value;
+  // },
+  // original_title: 1, 
+  // release_date: 1, 
+  // vote_average: 1,
+};
 
 // - создаем функцию activeHomePage  которая показывает домашнюю страницу 
 //прячет остальные, а также вешает слушателей на кнопку вперед и назад
 // из плагинации и удаляет ненужных всех слушателей
 //  (таких 4 во всем проекте не нужных на этой странице); 
 export function activeHomePage() {
+  refs.searchForm.classList.remove('is-hidden');
   refs.homePage.classList.remove('is-hidden');
   refs.detailsPage.innerHTML = '';
-  refs.libraryPage.classList.add('is-hidden');
+  refs.libraryPage.innerHTML = '';
   refs.moviesContainer.innerHTML = '';
   searchAndPaginationHomePage.fetchSearchMoviesList()
   .then(updateMovieMarkUp);
@@ -47,7 +58,14 @@ export function activeLibraryPage() {
 //   refs.libWatchedBtn.addEventListener('click', handlebuttonW)
 //   refs.libQueueBtn.addEventListener('click', handlebuttonQ)
 };
+// function showDetails(selectFilm) {
+//     const apiKey = "2e7ddd707cda482bd62363d7d16dcf77";
+//     const url = `https://api.themoviedb.org/3/movie/${selectFilm.id}?api_key=${apiKey}&append_to_response=videos`;
 
+//   return fetch(url)
+//     .then(response => response.json())
+//     .catch(error => console.log(error));
+// }
 // - создаем функцию activeDetailsPage которая показывает страницу 
 // детальной отрисовки фильма и прячет остальные, функция принимает 
 // два параметра movieId и itsLibraryFilm (это bool), и в зависимости 
@@ -59,17 +77,25 @@ export function activeLibraryPage() {
 //   просмотра и добавления/удаления фильмов из просмотренных со страницы
 //    detailsPage и удаляет ненужных всех слушателей 
 //    (таких 4 во всем проекте не нужных на этой странице); 
-export function activeDetailsPage(movieId, itsLibraryFilm) {
-    refs.homePage.classList.add('is-hidden');
-    refs.libraryPage.classList.add('is-hidden');
-    if (itsLibraryFilm) {
-            selectFilm = {
-            id: movieId,
-            // library: itsLibraryFilm,
-        };
-    }
-    showDetails(selectFilm);
-};
+
+// export function activeDetailsPage(movieId, itsLibraryFilm) {
+//     refs.searchForm.classList.add('is-hidden');
+//     refs.homePage.classList. add('is-hidden');
+//     refs.libraryPage.innerHTML = '';
+//     selectFilm.id = movieId;
+//     if (itsLibraryFilm) {
+//             selectFilm = {
+//             id: movieId,
+//             backdrop_path: 1,
+//             original_title: 1, 
+//             id: 1, 
+//             release_date: 1, 
+//             vote_average: 1,
+//             // library: itsLibraryFilm,
+//         };
+//     }
+//     showDetails(selectFilm);
+// };
 
 // - вешаем слушателей на переход на домашнюю страницу и страницу 
 // библиотеки в хедере.

@@ -9,3 +9,14 @@ function fetchMovieByID(id) {
 }
 
 export default fetchMovieByID;
+
+// async function fetchMovieByID(id) {
+//   const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&append_to_response=videos`;
+
+//   try {
+//     const response = await fetch(url);
+//     return await response.json();
+//   } catch (error) {
+//     return console.log(error);
+//   }
+// }

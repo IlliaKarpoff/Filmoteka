@@ -15,12 +15,13 @@ body {
   // color: $main-text;
   // background-color: #fff;
 }
-.is-hidden {
-  display: none;
-}
 
 @import 'header.scss';
 @import 'homePage.scss';
 @import 'detailsPage.scss';
 @import 'myFilmLibraryPage.scss';
 @import 'footer.scss';
+
+.is-hidden {
+  display: none;
+}

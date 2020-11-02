@@ -1,41 +1,114 @@
-import updateDetailsPageMarkUp from './templating';
+import { updateDetailsPageMarkUp } from './templating';
+import detailsPageTpl from '../templates/detailsPage.hbs';
+
 import fetchMovieByID from './fetchMovieByID';
 import refs from './refs';
+
+import { selectFilm } from './3navigation'
+// import { get } from 'core-js/fn/dict';
 
 // const homePage = document.querySelector('#homePage');
 // const detailsPage = document.querySelector('#detailsPage');
 
-const activeDetailsPage = (event) => {
-    if (event.target.nodeName !== 'IMG') { return }
+// const activeDetailsPage = (event) => {
+//     if (event.target.nodeName !== 'IMG') { return }
     // refs.detailsPage.innerHTML = '';
-    refs.searchForm.classList.add('is-hidden');
-    const movieId = event.target.dataset.id;
-    console.log('movieId', movieId);
-    refs.homePage.classList.add('is-hidden');
+//     refs.searchForm.classList.add('is-hidden');
+//     refs.homePage.classList.add('is-hidden');
+//     refs.libraryPage.classList.add('is-hidden');
 
-    fetchMovieByID(movieId).then(updateDetailsPageMarkUp)
+//     console.log(event.target);
+//     const movieId = event.target.dataset.id;
+//     // console.log('movieId', movieId);
+
+//     // fetchMovieByID(movieId).then(updateDetailsPageMarkUp)
+//     fetchMovieByID(movieId).then(showDetails)
+// };
+// export 
+function activeDetailsPage(event, movieId, itsLibraryFilm) {
+    console.log('selectFilm', selectFilm);
+    if (event.target.nodeName !== 'IMG') { return }
+    refs.searchForm.classList.add('is-hidden');
+    refs.homePage.classList.add('is-hidden');
+    refs.detailsPage.classList.remove('is-hidden');
+    refs.libraryPage.innerHTML = '';
+    refs.detailsPage.innerHTML = '';
+
+    // console.log(event.target.src);
+    // console.log(event.target.alt);
+    // console.log(event.target.dataset.id);
+    // console.log(event.target.dataset.date.split('-')[0]);
+    
+    movieId = event.target.dataset.id;  
+    console.log('selectFilm.id', selectFilm.id);
+    // if (itsLibraryFilm) {
+        if (true) {
+            selectFilm.id = movieId;
+            selectFilm.library = true
+    //     selectFilm = {
+    //         id: movieId,
+    // //         backdrop_path: 1,
+    // //         original_title: 1, 
+    // //         id: 1, 
+    // //         release_date: 1, 
+    // //         vote_average: 1,
+    //         // library: itsLibraryFilm,
+    //     };
+    };
+        console.log(selectFilm);
+    // fetchMovieByID(movieId).then(showDetails);
+    // }
+    fetchMovieByID(movieId).then((selectFilm) => {
+        // showDetails(result)
+        showDetails(selectFilm);
+    })
+    .catch(fuckup => console.log(fuckup))
+    window.addEventListener('click', cb);
 };
+function cb(event) {
+    console.log('click!');
+    console.log(event.target);
+    // addToWatchedBtn
+}
+
+//     if (event.target.nodeName !== 'IMG') { return }
+//     // refs.detailsPage.innerHTML = '';
+//     refs.searchForm.classList.add('is-hidden');
+//     const movieId = event.target.dataset.id;
+//     console.log('movieId', movieId);
+//     refs.homePage.classList.add('is-hidden');
+//     refs.libraryPage.classList.add('is-hidden');
+//     fetchMovieByID(movieId).then(updateDetailsPageMarkUp)
+// };
 
 export default activeDetailsPage;
 
-// - пишем функцию monitorButtonStatusText которая следит за состоянием (значок и текст в кнопке) читает  local storage по ключу filmsQueue и  filmsWatched и меняет текст и значки в кнопках: Delete from queue / Add to queue ; Delete from watched / Add to watched.
-// - пишем функцию toggleToQueue (будет добавлять или удалять фильмы из очереди просмотра), которая создает переменную массива в очереди, читает local storage по ключу filmsQueue если результат не пустой то пушит элементы в нашу переменную, ! также функция вплотную работает с глобальной переменной selectFilm, и если selectFilm содержиться в нашей переменной то убираем его оттуда иначе добавляем selectFilm в нашу переменную, потом эта функция кладет нашу переменную в  local storage, запускает в конце себя функцию monitorButtonStatusText;
-// - пишем функцию toggleToWatched (будет добавлять или удалять фильмы из просмотренных), суть ее работы один в один как toggleToQueue  только работает с local storage по ключу filmsWatched.
-// - пишем функцию showDetails которая принимает параметром selectFilm (глобальная переменная - объект, которая создана в задаче номер три) и рендерит всю разметку согласно макета, в этой функции запускается функция monitorButtonStatusText.
+//- пишем функцию monitorButtonStatusText которая следит за состоянием 
+// (значок и текст в кнопке) читает  local storage по ключу filmsQueue
+//  и  filmsWatched и меняет текст и значки в кнопках: 
+// Delete from queue / Add to queue 
+// ; Delete from watched / Add to watched.
+function monitorButtonStatusText() {
+    const filmsWatched = localStorage.getItem('filmsWatched');
+    // addToWatchedBtn.textContent = 'Delete from watched';
+    // addToWatchedBtn.textContent = 'Add to watched';
+    const filmsQueue = localStorage.getItem('filmsQueue');
+    // addToQueueBtn.textContent = 'Delete from queue';
+    // addToQueueBtn.textContent = 'Add to queue';
+    // console.log(filmsWatched);
+    
+}
 
-// * из DOM достукивается до нужных кнопок участник 3 и вешает функции  toggleToQueue  и toggleToWatched слушателями на страницу деталей и удаляет там где не нужно.
+//- пишем функцию toggleToQueue (будет добавлять или удалять фильмы 
+// из очереди просмотра), которая создает переменную массива в очереди,
+//  читает local storage по ключу filmsQueue если результат не пустой
+//  то пушит элементы в нашу переменную, 
+// ! также функция вплотную работает с глобальной переменной selectFilm,
+//  и если selectFilm содержиться в нашей переменной то убираем его 
+// оттуда иначе добавляем selectFilm в нашу переменную, 
+// потом эта функция кладет нашу переменную в  local storage, 
+// запускает в конце себя функцию monitorButtonStatusText;
 
-
-// // функцию monitorButtonStatusText которая следит за состоянием 
-// // (значок и текст в кнопке) читает  local storage по ключу 
-// // filmsQueue и  filmsWatched и меняет текст и значки в кнопках
-
-// function monitorButtonStatusText() {
-//     if (watchedButton.textContent === 'Add to watched') {
-//         watchedButton.textContent = 'Delete from watched'
-//     }
-// // Delete from queue / Add to queue ; Delete from watched / Add to watched
-// }
 // // функцию toggleToQueue (будет добавлять или удалять фильмы из очереди просмотра)
 // function toggleToQueue() {
 //     const arr = []
@@ -61,3 +134,17 @@ export default activeDetailsPage;
 // function showDetails(selectFilm) {
 
 // }
+//- пишем функцию toggleToWatched (будет добавлять или удалять фильмы 
+// из просмотренных), суть ее работы один в один как toggleToQueue
+//   только работает с local storage по ключу filmsWatched.
+
+//- пишем функцию showDetails которая принимает параметром selectFilm
+//  (глобальная переменная - объект, которая создана в задаче номер 3)
+//  и рендерит всю разметку согласно макета, 
+//  в этой функции запускается функция monitorButtonStatusText.
+function showDetails(selectFilm) {
+//   const markUp = detailsPageTpl(result); 
+  refs.detailsPage.insertAdjacentHTML('beforeend', detailsPageTpl(selectFilm));
+  monitorButtonStatusText();
+}
+// * из DOM достукивается до нужных кнопок участник 3 и вешает функции  toggleToQueue  и toggleToWatched слушателями на страницу деталей и удаляет там где не нужно.
