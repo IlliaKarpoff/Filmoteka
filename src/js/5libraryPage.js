@@ -1,6 +1,7 @@
 
 import libPageTempl from '../templates/libPage.hbs';
 import refs from './refs';
+// import activeDetailsPage from './js/4filmDetailsPage';
 
 
 // const openLib = (event) =>{
@@ -38,3 +39,12 @@ function openLib() {
 
 
 export default openLib;
+// refs.libImg.addEventListener('click', activeDetailsPage);
+refs.libWatchedBtn.addEventListener('click', foo);
+refs.libQueueBtn.addEventListener('click', koo);
+function foo () {
+  alert('тыцьнули libWatchedBtn');
+}
+function koo () {
+  alert('тыцьнули libQueuedBtn');
+}
