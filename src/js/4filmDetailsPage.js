@@ -33,7 +33,10 @@ function activeDetailsPage(event, movieId, itsLibraryFilm) {
     refs.detailsPage.classList.remove('is-hidden');
     refs.libraryPage.innerHTML = '';
     refs.detailsPage.innerHTML = '';
-
+    refs.moviesContainer.innerHTML = '';
+    refs.popularPage.innerHTML = '';
+    refs.btnContainer.classList.add('is-hidden');
+    
     // console.log(event.target.src);
     // console.log(event.target.alt);
     // console.log(event.target.dataset.id);

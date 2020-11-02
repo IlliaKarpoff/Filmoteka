@@ -1,13 +1,14 @@
 
 import libPageTempl from '../templates/libPage.hbs';
 import refs from './refs';
-import { activeHomePage, activeLibraryPage, /*activeDetailsPage*/} from './3navigation';
+import navigationPages from './3navigation'
+// import { activeHomePage, activeLibraryPage, /*activeDetailsPage*/} from './3navigation';
 import activeDetailsPage from './4filmDetailsPage';
-import {createPopularMovieList} from '../index';
+// import {createPopularMovieList} from '../index';
 // import activeDetailsPage from './js/4filmDetailsPage';
 
 function openLib() {
-  activeLibraryPage ();
+  navigationPages.activeLibraryPage ();
   // refs.homePage.classList.remove('is-hidden');
   // refs.detailsPage.classList.add('is-hidden');
   refs.moviesContainer.innerHTML = '';
@@ -35,7 +36,7 @@ function openLib() {
 
 }
 refs.libraryPage.addEventListener('click', activeDetailsPage);
-refs.homeRef.addEventListener('click',createPopularMovieList);
+refs.homeRef.addEventListener('click', navigationPages.createPopularMovieList);
 
 export default openLib;
 // refs.libImg.addEventListener('click', activeDetailsPage);
