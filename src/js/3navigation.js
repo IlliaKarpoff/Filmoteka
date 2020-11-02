@@ -3,22 +3,45 @@ import searchAndPaginationHomePage from './searchAndPaginationHomePage';
 // './js/searchAndPaginationHomePage';
 // import searchAndPaginationHomePage from './searchAndPaginationHomePage';
 import updateMovieMarkUp from './updateMovieMarkUp';
-import {nextBtnHandler, prevBtnHandler} from '../index';
+import { nextBtnHandler, prevBtnHandler } from '../index';
+import fetchPopularMoviesList from './fetchPopularMoviesList';
+import updatePopularMovieMarkUp from './updatePopularMovieMarkUp';
 
 // - создаем глобальную переменную selectFilm; 
 let selectFilm = {};
+
+// export function createPopularMovieList() {
+function createPopularMovieList() {
+  refs.moviesContainer.innerHTML = '';
+  refs.detailsPage.innerHTML = '';
+  refs.popularPage.innerHTML = '';
+  fetchPopularMoviesList.fetchPopularMovies()
+    .then(updatePopularMovieMarkUp);
+  refs.btnContainer.classList.remove('is-hidden');
+  refs.nextBtn.classList.remove('is-hidden');
+  refs.pageBtn.textContent = fetchPopularMoviesList.pageNumber;
+  if (fetchPopularMoviesList.pageNumber !== 1) {
+    refs.prevBtn.classList.remove('is-hidden')
+  };
+  if (fetchPopularMoviesList.pageNumber === 1) {
+    refs.prevBtn.classList.add('is-hidden')
+  };
+  refs.nextBtn.addEventListener('click', nextBtnHandler);
+  refs.prevBtn.addEventListener('click', prevBtnHandler);
+}
 
 // - создаем функцию activeHomePage  которая показывает домашнюю страницу 
 //прячет остальные, а также вешает слушателей на кнопку вперед и назад
 // из плагинации и удаляет ненужных всех слушателей
 //  (таких 4 во всем проекте не нужных на этой странице); 
-export function activeHomePage() {
-  refs.homePage.classList.remove('is-hidden');
+// export function activeHomePage() {
+function activeHomePage() {
   refs.detailsPage.innerHTML = '';
-  refs.libraryPage.classList.add('is-hidden');
+  refs.popularPage.innerHTML = '';
   refs.moviesContainer.innerHTML = '';
   searchAndPaginationHomePage.fetchSearchMoviesList()
-  .then(updateMovieMarkUp);
+    .then(updateMovieMarkUp);
+    refs.btnContainer.classList.remove('is-hidden');
   refs.nextBtn.classList.remove('is-hidden');
   refs.pageBtn.textContent = searchAndPaginationHomePage.pageNumber;
   if (searchAndPaginationHomePage.pageNumber !== 1) {
@@ -27,6 +50,20 @@ export function activeHomePage() {
   if (searchAndPaginationHomePage.pageNumber === 1) {
     refs.prevBtn.classList.add('is-hidden')
   };
+  // refs.homePage.classList.remove('is-hidden');
+  // refs.detailsPage.innerHTML = '';
+  // refs.libraryPage.classList.add('is-hidden');
+  // refs.moviesContainer.innerHTML = '';
+  // searchAndPaginationHomePage.fetchSearchMoviesList()
+  // .then(updateMovieMarkUp);
+  // refs.nextBtn.classList.remove('is-hidden');
+  // refs.pageBtn.textContent = searchAndPaginationHomePage.pageNumber;
+  // if (searchAndPaginationHomePage.pageNumber !== 1) {
+  //   refs.prevBtn.classList.remove('is-hidden')
+  // };
+  // if (searchAndPaginationHomePage.pageNumber === 1) {
+  //   refs.prevBtn.classList.add('is-hidden')
+  // };
   refs.nextBtn.addEventListener('click', nextBtnHandler);
   refs.prevBtn.addEventListener('click', prevBtnHandler);
 };
@@ -37,7 +74,8 @@ export function activeHomePage() {
 //   класса, а также вешает слушателей на кнопки показа очереди фильмов
 //    и просмотренных фильмов и удаляет ненужных всех слушателей 
 //    (таких 4 во всем проекте не нужных на этой странице); 
-export function activeLibraryPage() {
+// export function activeLibraryPage() {
+function activeLibraryPage() {
     //   refs.moviesContainer.innerHTML = '';
   refs.homePage.classList.add('is-hidden');
   refs.detailsPage.innerHTML = '';
@@ -59,7 +97,8 @@ export function activeLibraryPage() {
 //   просмотра и добавления/удаления фильмов из просмотренных со страницы
 //    detailsPage и удаляет ненужных всех слушателей 
 //    (таких 4 во всем проекте не нужных на этой странице); 
-export function activeDetailsPage(movieId, itsLibraryFilm) {
+// export function activeDetailsPage(movieId, itsLibraryFilm) {
+function activeDetailsPage(movieId, itsLibraryFilm) {
     refs.homePage.classList.add('is-hidden');
     refs.libraryPage.classList.add('is-hidden');
     if (itsLibraryFilm) {
@@ -70,6 +109,8 @@ export function activeDetailsPage(movieId, itsLibraryFilm) {
     }
     showDetails(selectFilm);
 };
+
+export default {createPopularMovieList, activeHomePage, activeLibraryPage, activeDetailsPage}
 
 // - вешаем слушателей на переход на домашнюю страницу и страницу 
 // библиотеки в хедере.

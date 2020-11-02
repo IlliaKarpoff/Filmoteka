@@ -13,7 +13,7 @@ const refs = {
   libraryPage: document.querySelector('#libraryPage'),
   logoRef: document.querySelector('.logo-container'),
   main: document.querySelector('.main'),
-  moviesContainer: document.querySelector('.movie-list'),
+  // moviesContainer: document.querySelector('.movie-list'),
   nextBtn: document.querySelector('[data-action="next"]'),
   pageBtn: document.querySelector('.btn-number'),
   prevBtn: document.querySelector('[data-action="prev"]'),

@@ -11,10 +11,11 @@ const handleOpenDetails = (event) => {
     refs.popularPage.innerHTML = '';
     refs.btnContainer.classList.add('is-hidden');
 
-    fetchMovieByID(movieId).then(updateDetailsPageMarkUp)
+    fetchMovieByID(id).then(updateDetailsPageMarkUp)
+    // fetchMovieByID(movieId).then(updateDetailsPageMarkUp)
 };
 
-export default activeDetailsPage;
+export default handleOpenDetails;
 
 // - пишем функцию monitorButtonStatusText которая следит за состоянием (значок и текст в кнопке) читает  local storage по ключу filmsQueue и  filmsWatched и меняет текст и значки в кнопках: Delete from queue / Add to queue ; Delete from watched / Add to watched.
 // - пишем функцию toggleToQueue (будет добавлять или удалять фильмы из очереди просмотра), которая создает переменную массива в очереди, читает local storage по ключу filmsQueue если результат не пустой то пушит элементы в нашу переменную, ! также функция вплотную работает с глобальной переменной selectFilm, и если selectFilm содержиться в нашей переменной то убираем его оттуда иначе добавляем selectFilm в нашу переменную, потом эта функция кладет нашу переменную в  local storage, запускает в конце себя функцию monitorButtonStatusText;
