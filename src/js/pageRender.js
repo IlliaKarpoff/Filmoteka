@@ -5,7 +5,6 @@ import searchAndPaginationHomePage from './searchAndPaginationHomePage';
 import updateMovieMarkUp from './updateMovieMarkUp';
 
 function createPopularMovieList() {
-  // refs.popularPage.classList.remove('is-hidden');
   refs.moviesContainer.innerHTML = '';
   refs.detailsPage.innerHTML = '';
   refs.popularPage.innerHTML = '';
@@ -13,18 +12,20 @@ function createPopularMovieList() {
     .then(updatePopularMovieMarkUp);
   refs.btnContainer.classList.remove('is-hidden');
   refs.nextBtn.classList.remove('is-hidden');
-  searchAndPaginationHomePage.pageNumber;
-  refs.pageBtn.textContent = searchAndPaginationHomePage.pageNumber;
-  // fetchPopularMoviesList.prevBtnHandler();
-  fetchPopularMoviesList.nextBtnHandler();
+  refs.pageBtn.textContent = fetchPopularMoviesList.pageNumber;
+  if (fetchPopularMoviesList.pageNumber !== 1) {
+    refs.prevBtn.classList.remove('is-hidden')
+  };
+  if (fetchPopularMoviesList.pageNumber === 1) {
+    refs.prevBtn.classList.add('is-hidden')
+  };
 }
 
 function showHomePage() {
-  // refs.moviesContainer.classList.remove('is-hidden');
   refs.detailsPage.innerHTML = '';
   refs.popularPage.innerHTML = '';
   refs.moviesContainer.innerHTML = '';
-  searchAndPaginationHomePage.fetchSearchMoviesList() 
+  searchAndPaginationHomePage.fetchSearchMoviesList()
     .then(updateMovieMarkUp);
     refs.btnContainer.classList.remove('is-hidden');
   refs.nextBtn.classList.remove('is-hidden');
@@ -35,8 +36,6 @@ function showHomePage() {
   if (searchAndPaginationHomePage.pageNumber === 1) {
     refs.prevBtn.classList.add('is-hidden')
   };
-  // searchAndPaginationHomePage.prevBtnHandler();
-  // searchAndPaginationHomePage.nextBtnHandler();
 }
 
 export default { createPopularMovieList, showHomePage };
