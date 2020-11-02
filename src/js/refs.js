@@ -7,6 +7,8 @@ const refs = {
   detailsPage: document.querySelector('#detailsPage'),
   homePage: document.querySelector('#homePage'),
   homeRef: document.querySelector('.header__home-link'),
+  searchForm: document.querySelector('.header__form'),
+  moviesContainer: document.querySelector('.home-movie-list'),
   lib: document.querySelector('.header__lib-link'),
   libraryPage: document.querySelector('#libraryPage'),
   logoRef: document.querySelector('.logo-container'),
@@ -24,6 +26,8 @@ const refs = {
   libQueueBtn: document.querySelector('.lib_queue-link'),
   
  
+  popularPage: document.querySelector('.popular-movie-list'),
+  btnContainer: document.querySelector('.btn-container')
 }
 export default refs;
  // кнопки на показ списка очереди фильмов и списка просмотренных со страницы libraryPage

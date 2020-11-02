@@ -7,12 +7,14 @@ import './js/5libraryPage';
 
 import refs from './js/refs';
 import updateMovieMarkUp from './js/updateMovieMarkUp';
+import handleOpenDetails from './js/filmDetailsPage';
 import openLib from './js/5libraryPage';
 import searchAndPaginationHomePage from './js/searchAndPaginationHomePage';
 import { activeHomePage, activeLibraryPage/*, activeDetailsPage*/ } from './js/3navigation';
 import activeDetailsPage from './js/4filmDetailsPage';
 import fetchPopularMoviesList from './js/fetchPopularMoviesList';
 import upButtonHandler from './js/upButton';
+import pageRender from './js/pageRender';
 
 console.dir(window);
 
@@ -26,6 +28,7 @@ export function createPopularMovieList() {
 }
 
 createPopularMovieList();
+// fetchPopularPage();
 
 function fetchHomePage(event) {
   event.preventDefault();
@@ -36,6 +39,7 @@ function fetchHomePage(event) {
   form.reset();
   searchAndPaginationHomePage.resetPage();
   activeHomePage();
+  // pageRender.showHomePage();
 };
 /* перенес в навігейшн.жс
 // function activeHomePage() {
@@ -62,14 +66,42 @@ export function nextBtnHandler() {
 export function prevBtnHandler() {
   searchAndPaginationHomePage.decrementPage();
   activeHomePage();
-};
+
+
+
+function fetchPopularPage() {
+  fetchPopularMoviesList.resetPage();
+  pageRender.createPopularMovieList();
+}
+
+// function nextBtnHandler() {
+//   if (fetchHomePage) {
+//     searchAndPaginationHomePage.incrementPage();
+//     return pageRender.showHomePage();
+//   } else {
+//     fetchPopularMoviesList.incrementPage();
+//     return pageRender.createPopularMovieList();
+//   }
+// };
+
+// function prevBtnHandler() {
+//   if (fetchHomePage) {
+//     searchAndPaginationHomePage.decrementPage();
+//     return pageRender.showHomePage();
+//   }
+//   else {
+//     fetchPopularMoviesList.decrementPage();
+//     return pageRender.createPopularMovieList();
+//   }
+// };
 
 refs.lib.addEventListener('click', openLib);
 refs.searchForm.addEventListener('submit', fetchHomePage);
-/* перенес в навігейшн.жс
-// refs.nextBtn.addEventListener('click', nextBtnHandler);
-// refs.prevBtn.addEventListener('click', prevBtnHandler); */
 refs.moviesContainer.addEventListener('click', activeDetailsPage);
 refs.homeRef.addEventListener('click', activeHomePage);
+// refs.nextBtn.addEventListener('click', nextBtnHandler);
+// refs.prevBtn.addEventListener('click', prevBtnHandler);
+refs.homePage.addEventListener('click', handleOpenDetails);
+refs.homeRef.addEventListener('click', pageRender.showHomePage);
 refs.upButton.addEventListener('click', upButtonHandler);
-refs.logoRef.addEventListener('click', createPopularMovieList);
+refs.logoRef.addEventListener('click', fetchPopularPage);

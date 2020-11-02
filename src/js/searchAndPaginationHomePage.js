@@ -1,4 +1,4 @@
-import refs from './refs'
+import refs from './refs';
 
 const apiKey = "2e7ddd707cda482bd62363d7d16dcf77";
 
