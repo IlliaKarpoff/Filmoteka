@@ -66,13 +66,13 @@ export function nextBtnHandler() {
 export function prevBtnHandler() {
   searchAndPaginationHomePage.decrementPage();
   activeHomePage();
+};
 
 
-
-function fetchPopularPage() {
-  fetchPopularMoviesList.resetPage();
-  pageRender.createPopularMovieList();
-}
+// function fetchPopularPage() {
+//   fetchPopularMoviesList.resetPage();
+//   pageRender.createPopularMovieList();
+// }
 
 // function nextBtnHandler() {
 //   if (fetchHomePage) {
