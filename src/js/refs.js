@@ -19,6 +19,10 @@ const refs = {
   searchForm: document.querySelector('.header__form'),
   upButton: document.querySelector('.up-btn'),
   libList: document.querySelector('.lib-list'),
+  libImg: document.querySelector('.lib-list__item-img'),
+  libWatchedBtn: document.querySelector('.lib_watched-link'),
+  libQueueBtn: document.querySelector('.lib_queue-link'),
+  
  
 }
 export default refs;
