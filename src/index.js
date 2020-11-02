@@ -16,7 +16,7 @@ import upButtonHandler from './js/upButton';
 
 console.dir(window);
 
-function createPopularMovieList() {
+export function createPopularMovieList() {
   refs.homePage.classList.remove('is-hidden');
   refs.moviesContainer.innerHTML = '';
   fetchPopularMoviesList()
