@@ -1,88 +1,72 @@
 import { updateDetailsPageMarkUp } from './templating';
 import detailsPageTpl from '../templates/detailsPage.hbs';
-
 import fetchMovieByID from './fetchMovieByID';
 import refs from './refs';
-
 import { selectFilm } from './3navigation'
-// import { get } from 'core-js/fn/dict';
 
-// const homePage = document.querySelector('#homePage');
-// const detailsPage = document.querySelector('#detailsPage');
-
-// const activeDetailsPage = (event) => {
-//     if (event.target.nodeName !== 'IMG') { return }
-    // refs.detailsPage.innerHTML = '';
-//     refs.searchForm.classList.add('is-hidden');
-//     refs.homePage.classList.add('is-hidden');
-//     refs.libraryPage.classList.add('is-hidden');
-
-//     console.log(event.target);
-//     const movieId = event.target.dataset.id;
-//     // console.log('movieId', movieId);
-
-//     // fetchMovieByID(movieId).then(updateDetailsPageMarkUp)
-//     fetchMovieByID(movieId).then(showDetails)
-// };
-// export 
-function activeDetailsPage(event, movieId, itsLibraryFilm) {
-    console.log('selectFilm', selectFilm);
+function selectMovie(event) {
+    selectFilm.imgPath = event.target.src;
+    selectFilm.title = event.target.alt;
+    selectFilm.id = event.target.dataset.id;
+    selectFilm.year = event.target.dataset.date.split('-')[0];
+    console.log('Selected movie:', selectFilm);
+};
+const activeDetailsPage = (event) => {
     if (event.target.nodeName !== 'IMG') { return }
+    refs.detailsPage.innerHTML = '';
     refs.searchForm.classList.add('is-hidden');
     refs.homePage.classList.add('is-hidden');
-    refs.detailsPage.classList.remove('is-hidden');
-    refs.libraryPage.innerHTML = '';
-    refs.detailsPage.innerHTML = '';
-    refs.moviesContainer.innerHTML = '';
-    refs.popularPage.innerHTML = '';
-    refs.btnContainer.classList.add('is-hidden');
-    
-    // console.log(event.target.src);
-    // console.log(event.target.alt);
-    // console.log(event.target.dataset.id);
-    // console.log(event.target.dataset.date.split('-')[0]);
-    
-    movieId = event.target.dataset.id;  
-    console.log('selectFilm.id', selectFilm.id);
-    // if (itsLibraryFilm) {
-        if (true) {
-            selectFilm.id = movieId;
-            selectFilm.library = true
-    //     selectFilm = {
-    //         id: movieId,
-    // //         backdrop_path: 1,
-    // //         original_title: 1, 
-    // //         id: 1, 
-    // //         release_date: 1, 
-    // //         vote_average: 1,
-    //         // library: itsLibraryFilm,
-    //     };
-    };
-        console.log(selectFilm);
-    // fetchMovieByID(movieId).then(showDetails);
-    // }
-    fetchMovieByID(movieId).then((selectFilm) => {
-        // showDetails(result)
-        showDetails(selectFilm);
-    })
-    .catch(fuckup => console.log(fuckup))
-    window.addEventListener('click', cb);
-};
-function cb(event) {
-    console.log('click!');
-    console.log(event.target);
-    // addToWatchedBtn
-}
+    refs.libraryPage.classList.add('is-hidden');
+    const movieId = event.target.dataset.id;
 
+    selectMovie(event);
+
+    fetchMovieByID(movieId).then(updateDetailsPageMarkUp)
+    // fetchMovieByID(movieId).then(showDetails)
+};
+// export 
+// function activeDetailsPage(event, movieId, itsLibraryFilm) {
+//     console.log('selectFilm', selectFilm);
 //     if (event.target.nodeName !== 'IMG') { return }
-//     // refs.detailsPage.innerHTML = '';
 //     refs.searchForm.classList.add('is-hidden');
-//     const movieId = event.target.dataset.id;
-//     console.log('movieId', movieId);
 //     refs.homePage.classList.add('is-hidden');
-//     refs.libraryPage.classList.add('is-hidden');
-//     fetchMovieByID(movieId).then(updateDetailsPageMarkUp)
+//     refs.detailsPage.classList.remove('is-hidden');
+//     refs.libraryPage.innerHTML = '';
+//     refs.detailsPage.innerHTML = '';
+//     refs.moviesContainer.innerHTML = '';
+//     refs.popularPage.innerHTML = '';
+//     refs.btnContainer.classList.add('is-hidden');
+    
+//     // console.log(event.target.src);
+//     // console.log(event.target.alt);
+//     // console.log(event.target.dataset.id);
+//     // console.log(event.target.dataset.date.split('-')[0]);
+    
+//     movieId = event.target.dataset.id;  
+//     console.log('selectFilm.id', selectFilm.id);
+//     // if (itsLibraryFilm) {
+//         if (true) {
+//             selectFilm.id = movieId;
+//             selectFilm.library = true
+//     };
+//         console.log(selectFilm);
+//     fetchMovieByID(movieId).then(showDetails)
+//     .catch(fuckup => console.log(fuckup));
 // };
+// function cb() {
+//     console.log('click!');
+// }
+// function listen() {
+//     refs.addToWatchedBtn.addEventListener('click', cb);
+//     refs.addToQueueBtn.addEventListener('click', cb);
+// }
+// function foo() {
+//     // activeDetailsPage();
+//     // listen();
+// }
+
+
+//    
 
 export default activeDetailsPage;
 

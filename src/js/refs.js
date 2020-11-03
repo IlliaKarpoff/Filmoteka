@@ -1,9 +1,9 @@
 const refs = {
-  addToWatchedBtn: detailsPage.querySelector('.addToWatchedBtn'),
-  addToWatchedIcon: detailsPage.querySelector('.addToWatchedIcon'),
-  addToQueueBtn: detailsPage.querySelector('.addToQueueBtn'),
-  addToQueueIcon: detailsPage.querySelector('.addToQueueIcon'),
   
+  addToWatchedBtn: document.querySelector('.addToWatchedBtn'),
+  addToWatchedIcon: document.querySelector('.addToWatchedIcon'),
+  addToQueueBtn: document.querySelector('.addToQueueBtn'),
+  addToQueueIcon: document.querySelector('.addToQueueIcon'),
   btnContainer: document.querySelector('.btn-container'),
   detailsPage: document.querySelector('#detailsPage'),
   homePage: document.querySelector('#homePage'),
@@ -22,7 +22,6 @@ const refs = {
   popularPage: document.querySelector('.popular-movie-list'),
   prevBtn: document.querySelector('[data-action="prev"]'),
   searchForm: document.querySelector('.header__form'),
-  sectionLib: document.querySelector('.lib'),
   upButton: document.querySelector('.up-btn'),
 }
 export default refs;

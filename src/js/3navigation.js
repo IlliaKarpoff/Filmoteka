@@ -26,7 +26,8 @@ function createPopularMovieList() {
   refs.detailsPage.innerHTML = '';
   refs.popularPage.innerHTML = '';
   fetchPopularMoviesList.fetchPopularMovies()
-    .then(updatePopularMovieMarkUp);
+  .then(updatePopularMovieMarkUp);
+  refs.searchForm.classList.remove('is-hidden');
   refs.btnContainer.classList.remove('is-hidden');
   refs.nextBtn.classList.remove('is-hidden');
   refs.pageBtn.textContent = fetchPopularMoviesList.pageNumber;
@@ -45,11 +46,11 @@ function createPopularMovieList() {
 // из плагинации и удаляет ненужных всех слушателей
 //  (таких 4 во всем проекте не нужных на этой странице); 
 // export function activeHomePage() {
-  // refs.searchForm.classList.remove('is-hidden');
   // refs.homePage.classList.remove('is-hidden');
   // refs.detailsPage.innerHTML = '';
   // refs.libraryPage.innerHTML = '';
-function activeHomePage() {
+  function activeHomePage() {
+  refs.searchForm.classList.remove('is-hidden');
   refs.detailsPage.innerHTML = '';
   refs.popularPage.innerHTML = '';
   refs.moviesContainer.innerHTML = '';
@@ -150,7 +151,7 @@ function activeDetailsPage(movieId, itsLibraryFilm) {
     showDetails(selectFilm);
 };
 
-export default {createPopularMovieList, activeHomePage, activeLibraryPage, activeDetailsPage}
+export default {createPopularMovieList, activeHomePage, activeLibraryPage/*, activeDetailsPage*/}
 
 // - вешаем слушателей на переход на домашнюю страницу и страницу 
 // библиотеки в хедере.
