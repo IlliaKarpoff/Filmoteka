@@ -1,4 +1,6 @@
 const apiKey = "2e7ddd707cda482bd62363d7d16dcf77";
+import navigationPages from './3navigation';
+import refs from './refs';
 
 export default {
   pageNumber: 1,

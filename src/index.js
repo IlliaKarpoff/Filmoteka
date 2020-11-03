@@ -16,13 +16,15 @@ import upButtonHandler from './js/upButton';
 
 fetchPopularPage();
 
+
+
 function fetchHomePage(event) {
   event.preventDefault();
   
   const form = event.currentTarget;
   searchAndPaginationHomePage.query = form.elements.query.value;
   
-  form.reset();
+  // form.reset();
   searchAndPaginationHomePage.resetPage();
   navigationPages.activeHomePage();
 };
@@ -33,10 +35,15 @@ function fetchPopularPage() {
 }
 
 export function nextBtnHandler() {
-  if (refs.moviesContainer) {
-    searchAndPaginationHomePage.incrementPage();
-    return navigationPages.activeHomePage();
-  } else {
+  // if (refs.moviesContainer) {
+  //   searchAndPaginationHomePage.incrementPage();
+  //   return navigationPages.activeHomePage();
+  // } else {
+  //   fetchPopularMoviesList.incrementPage();
+  //   return navigationPages.createPopularMovieList();
+  // }
+  if (refs.searchForm = "") {
+    console.log(refs.searchForm);
     fetchPopularMoviesList.incrementPage();
     return navigationPages.createPopularMovieList();
   }
