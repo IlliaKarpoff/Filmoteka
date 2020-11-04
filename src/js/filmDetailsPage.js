@@ -14,10 +14,7 @@ function selectMovie(event) {
     //     refs.addToQueueBtn.addEventListener('click', activeDetailsPage);
     // }
 };
-console.log('Selected movie:', selectFilm);
-
-export let movieId;
-
+let movieId;
 const activeDetailsPage = (event) => {
     if (event.target.nodeName !== 'IMG') { return }
     refs.detailsPage.innerHTML = '';
@@ -25,23 +22,31 @@ const activeDetailsPage = (event) => {
     refs.homePage.classList.add('is-hidden');
     refs.libraryPage.classList.add('is-hidden');
     movieId = event.target.dataset.id;
-    
 
+    // selectMovie(event);
 
-    selectMovie(event);
+    fetchMovieByID(movieId)
+    .then((obj) => {
 
-    fetchMovieByID(movieId).then(updateDetailsPageMarkUp);
-    // fetchMovieByID(movieId).then(showDetails)
-    // if (selectMovie) {
-    //     refs.addToQueueBtn.addEventListener('click', console.log(123));
-    //     console.log(123);
-    // }
-    console.log('movieId внутри ф-ии:', movieId);
+        updateDetailsPageMarkUp(obj);
+        // selectMovie(event)
+    selectFilm.imgPath = obj.poster_path;
+    selectFilm.genres = obj.genres;
+    selectFilm.title = obj.title;
+    selectFilm.id = obj.id;
+    selectFilm.year = obj.release_date.split('-')[0];
 
+    refs.detailsPage.addEventListener('click', onclick);
+    })
 };
-
-console.log('после:',movieId);
-
+function onclick(event) {
+    if (event.target.classList.contains('addToWatchedBtn')) {
+        console.log('Додаємо в переглянуті!');
+    }
+    if (event.target.classList.contains('addToQueueBtn')) {
+        console.log('Цей подивимось на вихідних ;)');
+    }
+}
 // export 
 // function activeDetailsPage(event, movieId, itsLibraryFilm) {
 //     console.log('selectFilm', selectFilm);

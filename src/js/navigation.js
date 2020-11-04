@@ -65,7 +65,6 @@ function createPopularMovieList() {
 //прячет остальные, а также вешает слушателей на кнопку вперед и назад
 // из плагинации и удаляет ненужных всех слушателей
 //  (таких 4 во всем проекте не нужных на этой странице); 
-// export function activeHomePage() {
 
 function activeHomePage() {
   activeMainPage();
@@ -95,7 +94,6 @@ function activeHomePage() {
 //   класса, а также вешает слушателей на кнопки показа очереди фильмов
 //    и просмотренных фильмов и удаляет ненужных всех слушателей 
 //    (таких 4 во всем проекте не нужных на этой странице); 
-// export function activeLibraryPage() {
 function activeLibraryPage() {
   cleanHomePage();
   cleanPopularPage();
@@ -104,7 +102,6 @@ function activeLibraryPage() {
   refs.homePage.classList.add('is-hidden');
   refs.searchForm.classList.add('is-hidden');
   refs.libraryPage.classList.remove('is-hidden');
-
 //   drawQueueFilmList();
 //   activeButton();
 //   refs.libWatchedBtn.addEventListener('click', handlebuttonW)
@@ -122,22 +119,20 @@ function activeLibraryPage() {
 //   просмотра и добавления/удаления фильмов из просмотренных со страницы
 //    detailsPage и удаляет ненужных всех слушателей 
 //    (таких 4 во всем проекте не нужных на этой странице); 
-// export function activeDetailsPage(movieId, itsLibraryFilm) {
 function activeDetailsPage(movieId, itsLibraryFilm) {
   cleanPopularPage();
   cleanHomePage();
   cleanDetailsPage();
   cleanLibraryPage();
-  
-    refs.homePage.classList.add('is-hidden');
-    refs.libraryPage.classList.add('is-hidden');
-    if (itsLibraryFilm) {
-            selectFilm = {
-            id: movieId,
-            // library: itsLibraryFilm,
-        };
-    }
-    showDetails(selectFilm);
+  refs.homePage.classList.add('is-hidden');
+  refs.libraryPage.classList.add('is-hidden');
+  if (itsLibraryFilm) {
+          selectFilm = {
+          id: movieId,
+          // library: itsLibraryFilm,
+      };
+  }
+  showDetails(selectFilm);
 };
 
 export default {createPopularMovieList, activeHomePage, activeLibraryPage, activeDetailsPage}
