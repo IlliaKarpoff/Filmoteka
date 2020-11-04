@@ -35,32 +35,16 @@ const activeDetailsPage = (event) => {
     selectFilm.title = obj.title;
     selectFilm.id = obj.id;
     selectFilm.year = obj.release_date.split('-')[0];
+
+    refs.detailsPage.addEventListener('click', onclick);
     })
-    .then(() => {
-        console.log(refs.addToWatchedBtn);
-        console.log(refs.detailsPage);
-        console.log(selectFilm);
-        refs.detailsPage.addEventListener('click', onclick);
-
-    });
-    // fetchMovieByID(movieId).then(showDetails)
-    // if (selectMovie) {
-    //     refs.addToQueueBtn.addEventListener('click', console.log(123));
-    //     console.log(123);
-    // }addToQueue
-
 };
 function onclick(event) {
-    // if (event.target.nodeName !== 'BUTTON') { return }
-        // console.log(refs.addToWatchedBtn);
-
-    // console.dir(event.target);
-    if (event.target === 'button.button.addToQueueBtn') {
-        console.log(event.target);
-        console.log(2);
+    if (event.target.classList.contains('addToWatchedBtn')) {
+        console.log('Додаємо в переглянуті!');
     }
-    if (event.target === refs.addToQueueBtn) {
-        console.log(1);
+    if (event.target.classList.contains('addToQueueBtn')) {
+        console.log('Цей подивимось на вихідних ;)');
     }
 }
 // export 
