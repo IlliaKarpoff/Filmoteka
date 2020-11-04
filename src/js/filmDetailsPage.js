@@ -2,7 +2,7 @@ import { updateDetailsPageMarkUp } from './templating';
 import detailsPageTpl from '../templates/detailsPage.hbs';
 import fetchMovieByID from './fetchMovieByID';
 import refs from './refs';
-import { selectFilm } from './3navigation'
+import { selectFilm } from './navigation'
 
 function selectMovie(event) {
     selectFilm.imgPath = event.target.src;
