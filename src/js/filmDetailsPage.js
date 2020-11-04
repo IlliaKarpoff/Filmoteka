@@ -14,24 +14,55 @@ function selectMovie(event) {
     //     refs.addToQueueBtn.addEventListener('click', activeDetailsPage);
     // }
 };
+let movieId;
 const activeDetailsPage = (event) => {
     if (event.target.nodeName !== 'IMG') { return }
     refs.detailsPage.innerHTML = '';
     refs.searchForm.classList.add('is-hidden');
     refs.homePage.classList.add('is-hidden');
     refs.libraryPage.classList.add('is-hidden');
-    const movieId = event.target.dataset.id;
+    movieId = event.target.dataset.id;
 
-    selectMovie(event);
+    // selectMovie(event);
 
-    fetchMovieByID(movieId).then(updateDetailsPageMarkUp);
+    fetchMovieByID(movieId)
+    .then((obj) => {
+
+        updateDetailsPageMarkUp(obj);
+        // selectMovie(event)
+    selectFilm.imgPath = obj.poster_path;
+    selectFilm.genres = obj.genres;
+    selectFilm.title = obj.title;
+    selectFilm.id = obj.id;
+    selectFilm.year = obj.release_date.split('-')[0];
+    })
+    .then(() => {
+        console.log(refs.addToWatchedBtn);
+        console.log(refs.detailsPage);
+        console.log(selectFilm);
+        refs.detailsPage.addEventListener('click', onclick);
+
+    });
     // fetchMovieByID(movieId).then(showDetails)
     // if (selectMovie) {
     //     refs.addToQueueBtn.addEventListener('click', console.log(123));
     //     console.log(123);
-    // }
-};
+    // }addToQueue
 
+};
+function onclick(event) {
+    // if (event.target.nodeName !== 'BUTTON') { return }
+        // console.log(refs.addToWatchedBtn);
+
+    // console.dir(event.target);
+    if (event.target === 'button.button.addToQueueBtn') {
+        console.log(event.target);
+        console.log(2);
+    }
+    if (event.target === refs.addToQueueBtn) {
+        console.log(1);
+    }
+}
 // export 
 // function activeDetailsPage(event, movieId, itsLibraryFilm) {
 //     console.log('selectFilm', selectFilm);
