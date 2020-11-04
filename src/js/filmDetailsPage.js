@@ -2,7 +2,7 @@ import { updateDetailsPageMarkUp } from './templating';
 import detailsPageTpl from '../templates/detailsPage.hbs';
 import fetchMovieByID from './fetchMovieByID';
 import refs from './refs';
-import { selectFilm } from './3navigation'
+import { selectFilm } from './navigation'
 
 function selectMovie(event) {
     selectFilm.imgPath = event.target.src;
@@ -10,6 +10,9 @@ function selectMovie(event) {
     selectFilm.id = event.target.dataset.id;
     selectFilm.year = event.target.dataset.date.split('-')[0];
     console.log('Selected movie:', selectFilm);
+    // if (activeDetailsPage) {
+    //     refs.addToQueueBtn.addEventListener('click', activeDetailsPage);
+    // }
 };
 const activeDetailsPage = (event) => {
     if (event.target.nodeName !== 'IMG') { return }
@@ -21,9 +24,14 @@ const activeDetailsPage = (event) => {
 
     selectMovie(event);
 
-    fetchMovieByID(movieId).then(updateDetailsPageMarkUp)
+    fetchMovieByID(movieId).then(updateDetailsPageMarkUp);
     // fetchMovieByID(movieId).then(showDetails)
+    // if (selectMovie) {
+    //     refs.addToQueueBtn.addEventListener('click', console.log(123));
+    //     console.log(123);
+    // }
 };
+
 // export 
 // function activeDetailsPage(event, movieId, itsLibraryFilm) {
 //     console.log('selectFilm', selectFilm);
