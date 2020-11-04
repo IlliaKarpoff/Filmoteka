@@ -7,13 +7,13 @@ import './js/filmDetailsPage';
 import './js/libraryPage';
 
 import refs from './js/refs';
-// import handleOpenDetails from './js/filmDetailsPage';
 import upButtonHandler from './js/upButton';
 import fetchPopularMoviesList from './js/initialHomePage';
 import searchAndPaginationHomePage from './js/searchAndPaginationHomePage';
 import navigationPages from './js/navigation';
 import activeDetailsPage from './js/filmDetailsPage';
 import openLib from './js/libraryPage';
+// import {movieId} from '.js/filmDetailsPage';
 
 fetchPopularPage();
 
@@ -40,3 +40,6 @@ refs.lib.addEventListener('click', openLib);
 refs.searchForm.addEventListener('submit', fetchHomePage);
 refs.homePage.addEventListener('click', activeDetailsPage);
 refs.upButton.addEventListener('click', upButtonHandler);
+
+
+// console.log('в индекс вне ф-ии:',movieId);

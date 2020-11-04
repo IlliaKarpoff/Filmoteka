@@ -6,14 +6,18 @@ import {toStorage, fromStorage} from './utilities';
 import selectMovie from './filmDetailsPage';
 import selectedMovie from './filmDetailsPage';
 import selectFilm from './navigation';
+import {movieId} from './filmDetailsPage';
+
 
 
 // import { activeHomePage, activeLibraryPage, /*activeDetailsPage*/} from './3navigation';
 import activeDetailsPage from './filmDetailsPage';
 // import {createPopularMovieList} from '../index';
 // import activeDetailsPage from './js/4filmDetailsPage';
-
+console.log('в библиотеке вне ф-ии:',movieId);
 function openLib() {
+console.log('в библиотеке:',movieId);
+
   navigationPages.activeLibraryPage();
   const apiKey = "2e7ddd707cda482bd62363d7d16dcf77";
   // const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en&page=1`;
@@ -50,5 +54,5 @@ export default openLib;
 
 // import { from } from 'core-js/fn/array';
 
-console.log(selectFilm);
+console.log(movieId);
 

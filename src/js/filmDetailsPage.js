@@ -9,18 +9,24 @@ function selectMovie(event) {
     selectFilm.title = event.target.alt;
     selectFilm.id = event.target.dataset.id;
     selectFilm.year = event.target.dataset.date.split('-')[0];
-    console.log('Selected movie:', selectFilm);
+    // console.log('Selected movie:', selectFilm);
     // if (activeDetailsPage) {
     //     refs.addToQueueBtn.addEventListener('click', activeDetailsPage);
     // }
 };
+console.log('Selected movie:', selectFilm);
+
+export let movieId;
+
 const activeDetailsPage = (event) => {
     if (event.target.nodeName !== 'IMG') { return }
     refs.detailsPage.innerHTML = '';
     refs.searchForm.classList.add('is-hidden');
     refs.homePage.classList.add('is-hidden');
     refs.libraryPage.classList.add('is-hidden');
-    const movieId = event.target.dataset.id;
+    movieId = event.target.dataset.id;
+    
+
 
     selectMovie(event);
 
@@ -30,7 +36,11 @@ const activeDetailsPage = (event) => {
     //     refs.addToQueueBtn.addEventListener('click', console.log(123));
     //     console.log(123);
     // }
+    console.log('movieId внутри ф-ии:', movieId);
+
 };
+
+console.log('после:',movieId);
 
 // export 
 // function activeDetailsPage(event, movieId, itsLibraryFilm) {
