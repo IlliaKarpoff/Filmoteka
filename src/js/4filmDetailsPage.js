@@ -68,6 +68,7 @@ const activeDetailsPage = (event) => {
 
 //    
 
+// export selectMovie;
 export default activeDetailsPage;
 
 //- пишем функцию monitorButtonStatusText которая следит за состоянием 

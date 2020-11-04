@@ -49,12 +49,15 @@ export default openLib;
 //   alert('тыцьнули libQueuedBtn');
 // }
 
+import selectMovie from './4filmDetailsPage';
 
+function toStorage (key, value) {
+  window.local.Storage.setItem(key,value)
+}
 
-// const openLib = (event) =>{
-//   refs.sectionLib.classList.remove('hidden');
-//   refs.sectionLib.classList.add('visible');
-//   refs.searchForm.classList.add('hidden');
-//   refs.homePage.classList.add('hidden');
-//   console.log("показываем кнопки");
-// };
+function fromStorage (key) {
+  return window.local.Storage.getItem(key)
+}
+
+console.log(selectMovie);
+

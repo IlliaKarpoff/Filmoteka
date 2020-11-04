@@ -17,13 +17,13 @@ import upButtonHandler from './js/upButton';
 fetchPopularPage();
 
 function fetchHomePage(event) {
-  event.preventDefault();
+  // event.preventDefault();
   
   const form = event.currentTarget;
   searchAndPaginationHomePage.query = form.elements.query.value;
   
   form.reset();
-  searchAndPaginationHomePage.resetPage();
+  // searchAndPaginationHomePage.resetPage();
   navigationPages.activeHomePage();
 };
 
