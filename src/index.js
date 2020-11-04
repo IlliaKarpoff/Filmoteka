@@ -5,6 +5,7 @@ import './js/navigation';
 import './js/filmDetailsPage';
 import './js/libraryPage';
 
+
 import refs from './js/refs';
 import handleOpenDetails from './js/filmDetailsPage';
 import openLib from './js/libraryPage';
@@ -14,6 +15,7 @@ import activeDetailsPage from './js/filmDetailsPage';
 import fetchPopularMoviesList from './js/initialHomePage';
 import upButtonHandler from './js/upButton';
 
+
 fetchPopularPage();
 
 function fetchHomePage(event) {
@@ -22,13 +24,8 @@ function fetchHomePage(event) {
   const form = event.currentTarget;
   searchAndPaginationHomePage.query = form.elements.query.value;
   
-<<<<<<< HEAD
   form.reset();
-  // searchAndPaginationHomePage.resetPage();
-=======
-  // form.reset();
   searchAndPaginationHomePage.resetPage();
->>>>>>> dev
   navigationPages.activeHomePage();
 };
 

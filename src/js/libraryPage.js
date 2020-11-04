@@ -1,7 +1,13 @@
 
 import libPageTempl from '../templates/libPage.hbs';
 import refs from './refs';
-import navigationPages from './navigation'
+import navigationPages from './navigation';
+import {toStorage, fromStorage} from './utilities';
+import selectMovie from './filmDetailsPage';
+import selectedMovie from './filmDetailsPage';
+import selectFilm from './navigation';
+
+
 // import { activeHomePage, activeLibraryPage, /*activeDetailsPage*/} from './3navigation';
 import activeDetailsPage from './filmDetailsPage';
 // import {createPopularMovieList} from '../index';
@@ -49,15 +55,8 @@ export default openLib;
 //   alert('тыцьнули libQueuedBtn');
 // }
 
-import selectMovie from './4filmDetailsPage';
 
-function toStorage (key, value) {
-  window.local.Storage.setItem(key,value)
-}
+// import { from } from 'core-js/fn/array';
 
-function fromStorage (key) {
-  return window.local.Storage.getItem(key)
-}
-
-console.log(selectMovie);
+console.log(selectFilm);
 
