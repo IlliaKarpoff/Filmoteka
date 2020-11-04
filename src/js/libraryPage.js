@@ -8,12 +8,7 @@ import activeDetailsPage from './filmDetailsPage';
 // import activeDetailsPage from './js/4filmDetailsPage';
 
 function openLib() {
-  navigationPages.activeLibraryPage ();
-  // refs.homePage.classList.remove('is-hidden');
-  // refs.detailsPage.classList.add('is-hidden');
-  refs.moviesContainer.innerHTML = '';
-  refs.libraryPage.innerHTML = '';
-  refs.detailsPage.innerHTML = '';
+  navigationPages.activeLibraryPage();
   const apiKey = "2e7ddd707cda482bd62363d7d16dcf77";
   // const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en&page=1`;
   // const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&primary_release_year=2010&sort_by=vote_average.desc`;
@@ -26,17 +21,14 @@ function openLib() {
 
       const markUp = libPageTempl(results);
       refs.libraryPage.insertAdjacentHTML('beforeend', markUp);
-      // refs.sectionLib.classList.add('visible');
-      refs.homePage.classList.add('is-hidden');
-      // refs.searchForm.classList.add('is-hidden');
-      refs.searchForm.classList.add('hidden');
     }
     ) 
     .catch(error => console.log(error));
-
 }
+
+refs.homeRef.addEventListener('click', navigationPages.activeHomePage);
 refs.libraryPage.addEventListener('click', activeDetailsPage);
-refs.homeRef.addEventListener('click', navigationPages.createPopularMovieList);
+// refs.homeRef.addEventListener('click', navigationPages.createPopularMovieList);
 
 export default openLib;
 // refs.libImg.addEventListener('click', activeDetailsPage);
