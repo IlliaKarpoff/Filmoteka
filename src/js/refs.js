@@ -17,11 +17,14 @@ const refs = {
   logoRef: document.querySelector('.logo-container'),
   main: document.querySelector('.main'),
   moviesContainer: document.querySelector('.home-movie-list'),
-  nextBtn: document.querySelector('[data-action="next"]'),
+  nextBtn: document.querySelector('.btn-next'),
+  nextHomeBtn: document.querySelector('.btn-next-home'),
   pageBtn: document.querySelector('.btn-number'),
   popularPage: document.querySelector('.popular-movie-list'),
-  prevBtn: document.querySelector('[data-action="prev"]'),
+  prevBtn: document.querySelector('.btn-prev'),
+  prevHomeBtn: document.querySelector('.btn-prev-home'),
   searchForm: document.querySelector('.header__form'),
   upButton: document.querySelector('.up-btn'),
+  colorLi: document.querySelector('.home-movie-list__item')
 }
 export default refs;

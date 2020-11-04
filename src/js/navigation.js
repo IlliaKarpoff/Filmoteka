@@ -3,12 +3,24 @@ import searchAndPaginationHomePage from './searchAndPaginationHomePage';
 // './js/searchAndPaginationHomePage';
 // import searchAndPaginationHomePage from './searchAndPaginationHomePage';
 import updateMovieMarkUp from './updateMovieMarkUp';
-import { nextBtnHandler, prevBtnHandler } from '../index';
-import fetchPopularMoviesList from './fetchPopularMoviesList';
+import { nextBtnHandler, prevBtnHandler, nextHomeBtnHandler, prevHomeBtnHandler } from './pagination';
+import fetchPopularMoviesList from './initialHomePage';
 import updatePopularMovieMarkUp from './updatePopularMovieMarkUp';
 
 // - создаем глобальную переменную selectFilm; 
-let selectFilm = {};
+export let selectFilm = {
+  id: 1, 
+  // _backdrop_path: 1,
+  // get backdrop_path() {
+  //   return this._backdrop_path;
+  // },
+  // set backdrop_path(value) {
+  //   this._backdrop_path = value;
+  // },
+  // original_title: 1, 
+  // release_date: 1, 
+  // vote_average: 1,
+};
 
 // export function createPopularMovieList() {
 function createPopularMovieList() {
@@ -26,6 +38,8 @@ function createPopularMovieList() {
   if (fetchPopularMoviesList.pageNumber === 1) {
     refs.prevBtn.classList.add('is-hidden')
   };
+  refs.nextHomeBtn.removeEventListener('click', nextHomeBtnHandler);
+  refs.prevHomeBtn.removeEventListener('click', prevHomeBtnHandler);
   refs.nextBtn.addEventListener('click', nextBtnHandler);
   refs.prevBtn.addEventListener('click', prevBtnHandler);
 }
@@ -50,22 +64,10 @@ function activeHomePage() {
   if (searchAndPaginationHomePage.pageNumber === 1) {
     refs.prevBtn.classList.add('is-hidden')
   };
-  // refs.homePage.classList.remove('is-hidden');
-  // refs.detailsPage.innerHTML = '';
-  // refs.libraryPage.classList.add('is-hidden');
-  // refs.moviesContainer.innerHTML = '';
-  // searchAndPaginationHomePage.fetchSearchMoviesList()
-  // .then(updateMovieMarkUp);
-  // refs.nextBtn.classList.remove('is-hidden');
-  // refs.pageBtn.textContent = searchAndPaginationHomePage.pageNumber;
-  // if (searchAndPaginationHomePage.pageNumber !== 1) {
-  //   refs.prevBtn.classList.remove('is-hidden')
-  // };
-  // if (searchAndPaginationHomePage.pageNumber === 1) {
-  //   refs.prevBtn.classList.add('is-hidden')
-  // };
-  refs.nextBtn.addEventListener('click', nextBtnHandler);
-  refs.prevBtn.addEventListener('click', prevBtnHandler);
+  refs.nextBtn.removeEventListener('click', nextBtnHandler);
+  refs.prevBtn.removeEventListener('click', prevBtnHandler);
+  refs.nextHomeBtn.addEventListener('click', nextHomeBtnHandler);
+  refs.prevHomeBtn.addEventListener('click', prevHomeBtnHandler);
 };
 // - создаем функцию activeLibraryPage которая показывает страницу
 //  с библиотекой и прячет остальные, запускает функцию отрисовки 
