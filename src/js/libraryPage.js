@@ -1,9 +1,9 @@
 
 import libPageTempl from '../templates/libPage.hbs';
 import refs from './refs';
-import navigationPages from './3navigation'
+import navigationPages from './navigation'
 // import { activeHomePage, activeLibraryPage, /*activeDetailsPage*/} from './3navigation';
-import activeDetailsPage from './4filmDetailsPage';
+import activeDetailsPage from './filmDetailsPage';
 // import {createPopularMovieList} from '../index';
 // import activeDetailsPage from './js/4filmDetailsPage';
 

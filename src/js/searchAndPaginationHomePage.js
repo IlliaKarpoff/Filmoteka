@@ -3,8 +3,7 @@ import refs from './refs';
 const apiKey = "2e7ddd707cda482bd62363d7d16dcf77";
 
 export default {
-  inputValue: '',
-  pageNumber: 1,
+  // inputValue: '',
   fetchSearchMoviesList() {
   const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en&query=${this.inputValue}&page=${this.pageNumber}`;
 
@@ -18,6 +17,9 @@ export default {
         refs.nextBtn.classList.add('is-hidden');
         refs.pageBtn.textContent = total_pages;
       }
+      // if (!results.backdrop_path) {
+      //   refs.colorLi.style.backgroundColor = 'yellow';
+      // }
       return results;
     })
   .catch(error => console.log(error));
