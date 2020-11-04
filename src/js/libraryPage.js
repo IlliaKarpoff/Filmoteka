@@ -1,7 +1,13 @@
 
 import libPageTempl from '../templates/libPage.hbs';
 import refs from './refs';
-import navigationPages from './navigation'
+import navigationPages from './navigation';
+import {toStorage, fromStorage} from './utilities';
+import selectMovie from './filmDetailsPage';
+import selectedMovie from './filmDetailsPage';
+import selectFilm from './navigation';
+
+
 // import { activeHomePage, activeLibraryPage, /*activeDetailsPage*/} from './3navigation';
 import activeDetailsPage from './filmDetailsPage';
 // import {createPopularMovieList} from '../index';
@@ -42,11 +48,7 @@ export default openLib;
 // }
 
 
+// import { from } from 'core-js/fn/array';
 
-// const openLib = (event) =>{
-//   refs.sectionLib.classList.remove('hidden');
-//   refs.sectionLib.classList.add('visible');
-//   refs.searchForm.classList.add('hidden');
-//   refs.homePage.classList.add('hidden');
-//   console.log("показываем кнопки");
-// };
+console.log(selectFilm);
+
