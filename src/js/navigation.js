@@ -21,17 +21,34 @@ export let selectFilm = {
   // release_date: 1, 
   // vote_average: 1,
 };
-
-// export function createPopularMovieList() {
-function createPopularMovieList() {
-  refs.moviesContainer.innerHTML = '';
-  refs.detailsPage.innerHTML = '';
+function cleanPopularPage() {
   refs.popularPage.innerHTML = '';
-  fetchPopularMoviesList.fetchPopularMovies()
-    .then(updatePopularMovieMarkUp);
+}
+function cleanHomePage() {
+  refs.moviesContainer.innerHTML = '';
+}
+function cleanDetailsPage() {
+  refs.detailsPage.innerHTML = '';
+}
+function cleanLibraryPage() {
+  refs.libraryPage.innerHTML = '';
+}
+function activeMainPage() {
+  refs.homePage.classList.remove('is-hidden');
+  refs.searchForm.classList.remove('is-hidden');
   refs.btnContainer.classList.remove('is-hidden');
   refs.nextBtn.classList.remove('is-hidden');
+}
+
+function createPopularMovieList() {
+  activeMainPage();
+  cleanHomePage();
+  cleanPopularPage();
+  cleanDetailsPage();
+  cleanLibraryPage();
   refs.pageBtn.textContent = fetchPopularMoviesList.pageNumber;
+  fetchPopularMoviesList.fetchPopularMovies()
+    .then(updatePopularMovieMarkUp);
   if (fetchPopularMoviesList.pageNumber !== 1) {
     refs.prevBtn.classList.remove('is-hidden')
   };
@@ -49,14 +66,16 @@ function createPopularMovieList() {
 // из плагинации и удаляет ненужных всех слушателей
 //  (таких 4 во всем проекте не нужных на этой странице); 
 // export function activeHomePage() {
+
 function activeHomePage() {
-  refs.detailsPage.innerHTML = '';
-  refs.popularPage.innerHTML = '';
-  refs.moviesContainer.innerHTML = '';
+  activeMainPage();
+  cleanPopularPage();
+  cleanHomePage();
+  cleanDetailsPage();
+  cleanLibraryPage();
+  if (!searchAndPaginationHomePage.inputValue) {return};
   searchAndPaginationHomePage.fetchSearchMoviesList()
     .then(updateMovieMarkUp);
-    refs.btnContainer.classList.remove('is-hidden');
-  refs.nextBtn.classList.remove('is-hidden');
   refs.pageBtn.textContent = searchAndPaginationHomePage.pageNumber;
   if (searchAndPaginationHomePage.pageNumber !== 1) {
     refs.prevBtn.classList.remove('is-hidden')
@@ -78,10 +97,14 @@ function activeHomePage() {
 //    (таких 4 во всем проекте не нужных на этой странице); 
 // export function activeLibraryPage() {
 function activeLibraryPage() {
-    //   refs.moviesContainer.innerHTML = '';
+  cleanHomePage();
+  cleanPopularPage();
+  cleanDetailsPage();
+  cleanLibraryPage();
   refs.homePage.classList.add('is-hidden');
-  refs.detailsPage.innerHTML = '';
+  refs.searchForm.classList.add('is-hidden');
   refs.libraryPage.classList.remove('is-hidden');
+
 //   drawQueueFilmList();
 //   activeButton();
 //   refs.libWatchedBtn.addEventListener('click', handlebuttonW)
@@ -101,6 +124,11 @@ function activeLibraryPage() {
 //    (таких 4 во всем проекте не нужных на этой странице); 
 // export function activeDetailsPage(movieId, itsLibraryFilm) {
 function activeDetailsPage(movieId, itsLibraryFilm) {
+  cleanPopularPage();
+  cleanHomePage();
+  cleanDetailsPage();
+  cleanLibraryPage();
+  
     refs.homePage.classList.add('is-hidden');
     refs.libraryPage.classList.add('is-hidden');
     if (itsLibraryFilm) {

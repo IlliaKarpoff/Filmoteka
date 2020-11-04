@@ -1,5 +1,3 @@
-'use strict'
-
 const apiKey = "2e7ddd707cda482bd62363d7d16dcf77";
 
 export default {
@@ -7,7 +5,7 @@ export default {
   pageNumber: 1,
   fetchPopularMovies() {
   const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en&page=${this.pageNumber}`;
-  
+
   return fetch(url)
   .then(response => response.json())
     .then(({ results }) => {
@@ -26,4 +24,4 @@ export default {
     if (this.pageNumber === 1) return;
     this.pageNumber -= 1;
   },
-}
+} 

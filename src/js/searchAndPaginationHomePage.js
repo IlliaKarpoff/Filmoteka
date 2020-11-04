@@ -5,6 +5,7 @@ const apiKey = "2e7ddd707cda482bd62363d7d16dcf77";
 export default {
   // inputValue: '',
   fetchSearchMoviesList() {
+    // if (!this.inputValue) return;
   const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en&query=${this.inputValue}&page=${this.pageNumber}`;
 
   return fetch(url)
