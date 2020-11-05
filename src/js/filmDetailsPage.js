@@ -2,9 +2,13 @@ import { updateDetailsPageMarkUp } from './templating';
 import detailsPageTpl from '../templates/detailsPage.hbs';
 import fetchMovieByID from './fetchMovieByID';
 import refs from './refs';
-import { selectFilm } from './navigation'
+// import { selectedMovie } from './navigation'
+
+const selectedMovie = {};
+let obj = {};
 
 function selectMovie(event) {
+<<<<<<< HEAD
     selectFilm.imgPath = event.target.src;
     selectFilm.title = event.target.alt;
     selectFilm.id = event.target.dataset.id;
@@ -15,6 +19,15 @@ function selectMovie(event) {
     //     refs.addToQueueBtn.addEventListener('click', activeDetailsPage);
     // }
 
+=======
+    selectedMovie.id = event.target.dataset.id;
+    selectedMovie.imgPath = event.target.src;
+    selectedMovie.title = event.target.alt;
+    selectedMovie.year = event.target.dataset.date.split('-')[0];
+    selectedMovie.vote = event.target.dataset.vote;
+    obj = {...selectedMovie};
+    console.log('Selected movie:', selectedMovie);
+>>>>>>> dev
 };
 
 let movieId;
@@ -28,6 +41,7 @@ const activeDetailsPage = (event) => {
 
     selectMovie(event);
 
+<<<<<<< HEAD
     fetchMovieByID(movieId).
     then(updateDetailsPageMarkUp);
     refs.detailsPage.addEventListener('click', onclick);
@@ -42,17 +56,33 @@ const activeDetailsPage = (event) => {
 const watchedMovies = [];
 const moviesQueue = [];
 const selectedMovie = {};
+=======
+    fetchMovieByID(movieId).then(updateDetailsPageMarkUp);
+    refs.detailsPage.addEventListener('click', onclick);
+};
+const watchedMovies = [];
+const moviesQueue = [];
+>>>>>>> dev
 
 function onclick(event) {
     if (event.target.classList.contains('addToWatchedBtn')) {
         console.log('Додаємо в переглянуті!');
+<<<<<<< HEAD
         watchedMovies.push(selectedMovie);
         console.log(watchedMovies);
+=======
+        watchedMovies.push(obj);
+        console.log(watchedMovies);
+        localStorage.setItem('filmsWatched', JSON.stringify(watchedMovies));
+        const parsedWatched = JSON.parse(localStorage.getItem('filmsWatched'));
+        console.log('Готовий масив для шаблонізатора:', parsedWatched);
+>>>>>>> dev
     }
     if (event.target.classList.contains('addToQueueBtn')) {
         console.log('Цей подивимось на вихідних ;)');
         moviesQueue.push(selectedMovie);
         console.log(moviesQueue);
+<<<<<<< HEAD
     }
 
 function selectMovie(event) {
@@ -117,6 +147,13 @@ function selectMovie(event) {
 //    
 
 // export selectMovie;
+=======
+        localStorage.setItem('filmsQueue', JSON.stringify(moviesQueue));
+        const parsedQueue = JSON.parse(localStorage.getItem('filmsQueue'));
+        console.log('Готовий масив для шаблонізатора:', parsedQueue);
+    }
+}
+>>>>>>> dev
 export default activeDetailsPage;
 
 //- пишем функцию monitorButtonStatusText которая следит за состоянием 
@@ -184,3 +221,38 @@ function showDetails(selectFilm) {
   monitorButtonStatusText();
 }
 // * из DOM достукивается до нужных кнопок участник 3 и вешает функции  toggleToQueue  и toggleToWatched слушателями на страницу деталей и удаляет там где не нужно.
+
+
+ // selectedMovie.imgPath = obj.poster_path;
+        // selectedMovie.title = obj.title;
+        // selectedMovie.id = obj.id;
+        // selectedMovie.vote = obj.vote_average;
+        // selectedMovie.year = obj.release_date.split('-')[0];
+    // console.log('Selected movie:', selectedMovie);
+
+    
+// export 
+// function activeDetailsPage(event, movieId, itsLibraryFilm) {
+//     console.log('selectFilm', selectFilm);
+//     if (event.target.nodeName !== 'IMG') { return }
+//     refs.searchForm.classList.add('is-hidden');
+//     refs.homePage.classList.add('is-hidden');
+//     refs.detailsPage.classList.remove('is-hidden');
+//     refs.libraryPage.innerHTML = '';
+//     refs.detailsPage.innerHTML = '';
+//     refs.moviesContainer.innerHTML = '';
+//     refs.popularPage.innerHTML = '';
+//     refs.btnContainer.classList.add('is-hidden');
+    
+//     movieId = event.target.dataset.id;  
+//     console.log('selectFilm.id', selectFilm.id);
+//     // if (itsLibraryFilm) {
+//         if (true) {
+//             selectFilm.id = movieId;
+//             selectFilm.library = true
+//     };
+//         console.log(selectFilm);
+//     fetchMovieByID(movieId).then(showDetails)
+//     .catch(fuckup => console.log(fuckup));
+// };
+
