@@ -14,6 +14,7 @@ import searchAndPaginationHomePage from './js/searchAndPaginationHomePage';
 import navigationPages from './js/navigation';
 import activeDetailsPage from './js/filmDetailsPage';
 import openLib from './js/libraryPage';
+import { myInfo } from './js/notification';
 
 fetchPopularPage();
 // localStorage.setItem('filmsWatched', JSON.stringify([]));
@@ -24,16 +25,23 @@ function fetchHomePage(event) {
   
   const form = event.currentTarget;
   searchAndPaginationHomePage.query = form.elements.query.value;
-  
-  // form.reset();
+ 
   searchAndPaginationHomePage.resetPage();
   navigationPages.activeHomePage();
+
+  refs.logoRef.addEventListener("click", function(e) {
+  if (e.currentTarget === refs.logoRef) {
+    form.reset();
+  }
+});
 };
 
 function fetchPopularPage(event) {
   if (event) event.preventDefault();
+  
   fetchPopularMoviesList.resetPage();
   navigationPages.createPopularMovieList();
+  myInfo()
 }
 
 refs.logoRef.addEventListener('click', fetchPopularPage);
