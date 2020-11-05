@@ -37,15 +37,7 @@ const activeDetailsPage = (event) => {
     fetchMovieByID(movieId).then(updateDetailsPageMarkUp);
     refs.detailsPage.addEventListener('click', onclick);
 };
-// function lightBox(event) {
-//     if (event.target.classList.contains('film-poster')) {
-//       console.log(event.target.src);
-//         const instance = basicLightbox.create(
-//         `<img src=${event.target.src} width="800" height="600">`,
-//         );
-//         instance.show();
-//     }
-// };
+
 const watchedMovies = [];
 const moviesQueue = [];
 
@@ -55,7 +47,6 @@ function onclick(event) {
         `<img src=${event.target.src} width="800" height="600">`,
         );
         instance.show();
-        console.log(event.target.src);
     };
     if (event.target.classList.contains('addToWatchedBtn')) {
         console.log('Додаємо в переглянуті!');

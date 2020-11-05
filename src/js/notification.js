@@ -8,6 +8,7 @@ const myAlert = () =>
     type: 'info',
     hide: true,
     delay: 1000,
+    addclass: 'custom-notif',
   });
 
 const myInfo = () =>
@@ -15,6 +16,7 @@ const myInfo = () =>
     text: 'Please, enter your query)',
     hide: true,
     delay: 1000,
+    addclass: 'custom-notif',
   });
 
 const myNotice = () =>
@@ -22,6 +24,7 @@ const myNotice = () =>
     text: 'No more movies',
     hide: true,
     delay: 1500,
+    addclass: 'custom-notif',
   });
 
 const myError = () =>
@@ -29,6 +32,7 @@ const myError = () =>
     text: 'Something went wrong( Please, try again!',
     hide: true,
     delay: 1000,
+    addclass: 'custom-notif',
   });
 
 export { myAlert, myInfo, myNotice, myError, notice };

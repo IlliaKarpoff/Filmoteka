@@ -1,13 +1,6 @@
 'use strict'
 import './sass/main.scss';
-import './js/initialHomePage';
-import './js/searchAndPaginationHomePage';
-import './js/navigation';
-import './js/filmDetailsPage';
-import './js/libraryPage';
-
 import refs from './js/refs';
-// import handleOpenDetails from './js/filmDetailsPage';
 import upButtonHandler from './js/upButton';
 import fetchPopularMoviesList from './js/initialHomePage';
 import searchAndPaginationHomePage from './js/searchAndPaginationHomePage';
