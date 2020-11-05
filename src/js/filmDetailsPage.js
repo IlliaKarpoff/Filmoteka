@@ -9,11 +9,14 @@ function selectMovie(event) {
     selectFilm.title = event.target.alt;
     selectFilm.id = event.target.dataset.id;
     selectFilm.year = event.target.dataset.date.split('-')[0];
-    // console.log('Selected movie:', selectFilm);
+    console.log('Selected movie:', selectFilm);
+
     // if (activeDetailsPage) {
     //     refs.addToQueueBtn.addEventListener('click', activeDetailsPage);
     // }
+
 };
+
 let movieId;
 const activeDetailsPage = (event) => {
     if (event.target.nodeName !== 'IMG') { return }
@@ -23,30 +26,52 @@ const activeDetailsPage = (event) => {
     refs.libraryPage.classList.add('is-hidden');
     movieId = event.target.dataset.id;
 
-    // selectMovie(event);
+    selectMovie(event);
 
-    fetchMovieByID(movieId)
-    .then((obj) => {
-
-        updateDetailsPageMarkUp(obj);
-        // selectMovie(event)
-    selectFilm.imgPath = obj.poster_path;
-    selectFilm.genres = obj.genres;
-    selectFilm.title = obj.title;
-    selectFilm.id = obj.id;
-    selectFilm.year = obj.release_date.split('-')[0];
-
+    fetchMovieByID(movieId).
+    then(updateDetailsPageMarkUp);
     refs.detailsPage.addEventListener('click', onclick);
-    })
+    //     updateDetailsPageMarkUp(obj);
+    //     // selectMovie(event)
+    // selectFilm.imgPath = obj.poster_path;
+    // selectFilm.genres = obj.genres;
+    // selectFilm.title = obj.title;
+    // selectFilm.id = obj.id;
+    // selectFilm.year = obj.release_date.split('-')[0];    
 };
+const watchedMovies = [];
+const moviesQueue = [];
+const selectedMovie = {};
+
 function onclick(event) {
     if (event.target.classList.contains('addToWatchedBtn')) {
         console.log('Додаємо в переглянуті!');
+        watchedMovies.push(selectedMovie);
+        console.log(watchedMovies);
     }
     if (event.target.classList.contains('addToQueueBtn')) {
         console.log('Цей подивимось на вихідних ;)');
+        moviesQueue.push(selectedMovie);
+        console.log(moviesQueue);
     }
-}
+
+function selectMovie(event) {
+    selectedMovie.id = event.target.dataset.id;
+    selectedMovie.imgPath = event.target.src;
+    selectedMovie.title = event.target.alt;
+    selectedMovie.year = event.target.dataset.date.split('-')[0];
+    selectedMovie.vote = event.target.dataset.vote;
+    console.log('Selected movie:', selectedMovie);
+ } };
+
+// function onclick(event) {
+//     if (event.target.classList.contains('addToWatchedBtn')) {
+//         console.log('Додаємо в переглянуті!');
+//     }
+//     if (event.target.classList.contains('addToQueueBtn')) {
+//         console.log('Цей подивимось на вихідних ;)');
+//     }
+// }
 // export 
 // function activeDetailsPage(event, movieId, itsLibraryFilm) {
 //     console.log('selectFilm', selectFilm);

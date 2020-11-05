@@ -6,7 +6,7 @@ import {toStorage, fromStorage} from './utilities';
 import selectMovie from './filmDetailsPage';
 import selectedMovie from './filmDetailsPage';
 import selectFilm from './navigation';
-import {movieId} from './filmDetailsPage';
+// import {movieId} from './filmDetailsPage';
 
 
 
@@ -14,20 +14,20 @@ import {movieId} from './filmDetailsPage';
 import activeDetailsPage from './filmDetailsPage';
 // import {createPopularMovieList} from '../index';
 // import activeDetailsPage from './js/4filmDetailsPage';
-console.log('в библиотеке вне ф-ии:',movieId);
+// console.log('в библиотеке вне ф-ии:',movieId);
 function openLib() {
-console.log('в библиотеке:',movieId);
+// console.log('в библиотеке:',movieId);
 
   navigationPages.activeLibraryPage();
   const apiKey = "2e7ddd707cda482bd62363d7d16dcf77";
   // const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en&page=1`;
   // const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&primary_release_year=2010&sort_by=vote_average.desc`;
-  const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=18&primary_release_year=2014`;
+  const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=18&primary_release_year=2019`;
 
   fetch(url)
   .then(response => response.json())
     .then(({ results }) => {
-      console.log(results)
+      // console.log(results)
 
       const markUp = libPageTempl(results);
       refs.libraryPage.insertAdjacentHTML('beforeend', markUp);
@@ -54,5 +54,5 @@ export default openLib;
 
 // import { from } from 'core-js/fn/array';
 
-console.log(movieId);
+// console.log(movieId);
 
