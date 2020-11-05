@@ -1,4 +1,4 @@
-import { alert, notice, info, success, error } from '@pnotify/core';
+import { alert, notice, info, error } from '@pnotify/core';
 import '@pnotify/core/dist/BrightTheme.css';
 import '@pnotify/core/dist/PNotify.css';
 
@@ -6,13 +6,6 @@ const myAlert = () =>
   alert({
     text: 'You should enter something',
     type: 'info',
-    hide: true,
-    delay: 1000,
-  });
-
-const mySuccess = () =>
-  success({
-    text: 'Yahoo, we find movies for you)',
     hide: true,
     delay: 1000,
   });
@@ -38,4 +31,4 @@ const myError = () =>
     delay: 1000,
   });
 
-export { myAlert, mySuccess, myInfo, myNotice, myError };
+export { myAlert, myInfo, myNotice, myError, notice };

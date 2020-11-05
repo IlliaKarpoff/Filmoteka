@@ -2,6 +2,9 @@ import { updateDetailsPageMarkUp } from './templating';
 import detailsPageTpl from '../templates/detailsPage.hbs';
 import fetchMovieByID from './fetchMovieByID';
 import refs from './refs';
+import { notice } from './notification';
+import * as basicLightbox from 'basiclightbox';
+import 'basiclightbox/dist/basicLightbox.min.css';
 // import { selectedMovie } from './navigation'
 
 const selectedMovie = {};
@@ -16,6 +19,10 @@ function selectMovie(event) {
     obj = {...selectedMovie};
     console.log('Selected movie:', selectedMovie);
 };
+
+
+
+
 let movieId;
 const activeDetailsPage = (event) => {
     if (event.target.nodeName !== 'IMG') { return }
@@ -30,12 +37,32 @@ const activeDetailsPage = (event) => {
     fetchMovieByID(movieId).then(updateDetailsPageMarkUp);
     refs.detailsPage.addEventListener('click', onclick);
 };
+// function lightBox(event) {
+//     if (event.target.classList.contains('film-poster')) {
+//       console.log(event.target.src);
+//         const instance = basicLightbox.create(
+//         `<img src=${event.target.src} width="800" height="600">`,
+//         );
+//         instance.show();
+//     }
+// };
 const watchedMovies = [];
 const moviesQueue = [];
 
 function onclick(event) {
+    if (event.target.classList.contains('film-poster')) {
+        const instance = basicLightbox.create(
+        `<img src=${event.target.src} width="800" height="600">`,
+        );
+        instance.show();
+        console.log(event.target.src);
+    };
     if (event.target.classList.contains('addToWatchedBtn')) {
         console.log('Додаємо в переглянуті!');
+        notice({
+        text: 'Movie added to Watched',
+        delay: 1500,
+        });
         watchedMovies.push(obj);
         console.log(watchedMovies);
         localStorage.setItem('filmsWatched', JSON.stringify(watchedMovies));
@@ -44,6 +71,10 @@ function onclick(event) {
     }
     if (event.target.classList.contains('addToQueueBtn')) {
         console.log('Цей подивимось на вихідних ;)');
+        notice({
+        text: 'Movie added to Queue',
+        delay: 1500,
+        });
         moviesQueue.push(selectedMovie);
         console.log(moviesQueue);
         localStorage.setItem('filmsQueue', JSON.stringify(moviesQueue));

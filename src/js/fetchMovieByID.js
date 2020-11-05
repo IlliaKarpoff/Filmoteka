@@ -1,3 +1,5 @@
+import { myError } from './notification';
+
 const apiKey = "2e7ddd707cda482bd62363d7d16dcf77";
 
 function fetchMovieByID(id) {
@@ -5,10 +7,8 @@ function fetchMovieByID(id) {
 
   return fetch(url)
     .then(response => response.json())
-    .catch(error => {
-      console.log(error);
+    .catch(error => myError(error));
       // pRef.innerHTML = 'error';
-    });
 }
 
 export default fetchMovieByID;

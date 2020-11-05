@@ -6,6 +6,8 @@
 .film-poster {
   /* display: block; */
   /* margin: auto; */
+  width: 274px;
+  height: 400px;
   margin-bottom: 20px;
 }
 .data-wrapper {
@@ -80,6 +82,15 @@ button > span {
     flex-direction: row;
   }
   .film-poster {
+    width: 358px;
+    height: 528px;
     margin-right: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .film-poster {
+    width: 428px;
+    height: 632px;
   }
 }
