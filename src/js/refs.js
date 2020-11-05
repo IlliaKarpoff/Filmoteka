@@ -24,7 +24,7 @@ const refs = {
   prevBtn: document.querySelector('.btn-prev'),
   prevHomeBtn: document.querySelector('.btn-prev-home'),
   searchForm: document.querySelector('.header__form'),
+  inputForm: document.querySelector('.header__form-input'),
   upButton: document.querySelector('.up-btn'),
-  colorLi: document.querySelector('.home-movie-list__item')
 }
 export default refs;

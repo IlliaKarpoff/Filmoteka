@@ -6,6 +6,7 @@ import {toStorage, fromStorage} from './utilities';
 import selectMovie from './filmDetailsPage';
 import selectedMovie from './filmDetailsPage';
 import selectFilm from './navigation';
+import { myError } from './notification';
 
 
 // import { activeHomePage, activeLibraryPage, /*activeDetailsPage*/} from './3navigation';
@@ -29,7 +30,7 @@ function openLib() {
       refs.libraryPage.insertAdjacentHTML('beforeend', markUp);
     }
     ) 
-    .catch(error => console.log(error));
+    .catch(error => myError(error));
 }
 
 refs.homeRef.addEventListener('click', navigationPages.activeHomePage);
