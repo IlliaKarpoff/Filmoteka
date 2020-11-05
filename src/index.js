@@ -41,3 +41,7 @@ refs.lib.addEventListener('click', openLib);
 refs.searchForm.addEventListener('submit', fetchHomePage);
 refs.homePage.addEventListener('click', activeDetailsPage);
 refs.upButton.addEventListener('click', upButtonHandler);
+
+
+// console.log('в индекс вне ф-ии:',movieId);
+console.log(refs.libWatchedBtn);
