@@ -8,7 +8,7 @@ import fetchPopularMoviesList from './initialHomePage';
 import updatePopularMovieMarkUp from './updatePopularMovieMarkUp';
 
 // - создаем глобальную переменную selectFilm; 
-export let selectFilm = {
+export let selectedMovie = {
   id: 1, 
   // _backdrop_path: 1,
   // get backdrop_path() {
