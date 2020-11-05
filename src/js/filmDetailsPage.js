@@ -18,9 +18,6 @@ function selectMovie(event) {
     console.log('Selected movie:', selectedMovie);
 };
 
-
-
-
 let movieId;
 const activeDetailsPage = (event) => {
     if (event.target.nodeName !== 'IMG') { return }
@@ -44,8 +41,8 @@ const activeDetailsPage = (event) => {
 //         instance.show();
 //     }
 // };
-const watchedMovies = [];
-const moviesQueue = [];
+let watchedMovies = [];
+let moviesQueue = [];
 
 function onclick(event) {
     if (event.target.classList.contains('film-poster')) {
@@ -53,36 +50,34 @@ function onclick(event) {
         `<img src=${event.target.src} width="800" height="600">`,
         );
         instance.show();
-        console.log(event.target.src);
+        // console.log(event.target.src);
     };
     if (event.target.classList.contains('addToWatchedBtn')) {
-        console.log('Додаємо в переглянуті!');
-        watchedMovies = JSON.parse(localStorage.getItem('filmsWatched'));
-        // const parsedWatched = JSON.parse(localStorage.getItem('filmsWatched'));
-        // parsedWatched.push({...selectedMovie});
-        watchedMovies.push({...selectedMovie});
-        // console.log(watchedMovies);
         notice({
         text: 'Movie added to Watched',
         delay: 1500,
         });
-        watchedMovies.push(obj);
-        console.log(watchedMovies);
+        console.log('Додаємо в переглянуті!');
+        watchedMovies = JSON.parse(localStorage.getItem('filmsWatched'));
+        // parsedWatched.push({...selectedMovie});
+        watchedMovies.push({...selectedMovie});
+        // console.log(watchedMovies);
         localStorage.setItem('filmsWatched', JSON.stringify(watchedMovies));
+        const parsedWatched = JSON.parse(localStorage.getItem('filmsWatched'));
         console.log('Готовий масив для шаблонізатора:', parsedWatched);
     }
     if (event.target.classList.contains('addToQueueBtn')) {
+        notice({
+        text: 'Movie added to Queue',
+        delay: 1500,
+        });
         console.log('Цей подивимось на вихідних ;)');
-        // moviesQueue = JSON.parse(localStorage.getItem('filmsQueue'));
+        moviesQueue = JSON.parse(localStorage.getItem('filmsQueue'));
         // // const parsedQueue = JSON.parse(localStorage.getItem('filmsQueue'));
         // // parsedQueue.push({...selectedMovie});
         // parsedQueue.push({...selectedMovie});
         // // console.log(moviesQueue);
         // localStorage.setItem('filmsQueue', JSON.stringify(parsedQueue));
-        notice({
-        text: 'Movie added to Queue',
-        delay: 1500,
-        });
         moviesQueue.push(selectedMovie);
         console.log(moviesQueue);
         localStorage.setItem('filmsQueue', JSON.stringify(moviesQueue));

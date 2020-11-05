@@ -17,8 +17,14 @@ import openLib from './js/libraryPage';
 import { myInfo } from './js/notification';
 
 fetchPopularPage();
-// localStorage.setItem('filmsWatched', JSON.stringify([]));
-// localStorage.setItem('filmsQueue', JSON.stringify([]));
+
+function 
+if (!localStorage.getItem('filmsWatched')) {
+  localStorage.setItem('filmsWatched', JSON.stringify([]));
+}
+if (!localStorage.getItem('filmsQueue')) {
+  localStorage.setItem('filmsQueue', JSON.stringify([]));
+}
 
 function fetchHomePage(event) {
   event.preventDefault();
