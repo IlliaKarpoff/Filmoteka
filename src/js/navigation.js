@@ -6,6 +6,7 @@ import updateMovieMarkUp from './updateMovieMarkUp';
 import { nextBtnHandler, prevBtnHandler, nextHomeBtnHandler, prevHomeBtnHandler } from './pagination';
 import fetchPopularMoviesList from './initialHomePage';
 import updatePopularMovieMarkUp from './updatePopularMovieMarkUp';
+import { myAlert } from './notification'
 
 // - создаем глобальную переменную selectFilm; 
 export let selectedMovie = {
@@ -72,15 +73,18 @@ function activeHomePage() {
   cleanHomePage();
   cleanDetailsPage();
   cleanLibraryPage();
-  if (!searchAndPaginationHomePage.inputValue) {return};
+  if (!searchAndPaginationHomePage.inputValue) {
+    return createPopularMovieList(),
+    myAlert();
+  };
   searchAndPaginationHomePage.fetchSearchMoviesList()
-    .then(updateMovieMarkUp);
+    .then(updateMovieMarkUp)
   refs.pageBtn.textContent = searchAndPaginationHomePage.pageNumber;
   if (searchAndPaginationHomePage.pageNumber !== 1) {
-    refs.prevBtn.classList.remove('is-hidden')
+    refs.prevBtn.classList.remove('is-hidden');
   };
   if (searchAndPaginationHomePage.pageNumber === 1) {
-    refs.prevBtn.classList.add('is-hidden')
+    refs.prevBtn.classList.add('is-hidden');
   };
   refs.nextBtn.removeEventListener('click', nextBtnHandler);
   refs.prevBtn.removeEventListener('click', prevBtnHandler);

@@ -53,11 +53,11 @@ function openLib() {
 refs.libSection.addEventListener('click', event =>{
       if (event.target.classList.contains('lib_queue-link')) {        
         console.log('открыли список Queue!');
-        
+        openQueue()
         // добавляем класс с бекграундом на кнопку        
        
         // refs.libQueueBtn.style.backgroundColor = "blue";
-        openQueue()
+        
         event.target.classList.add('activeLibBtn');
         
       }
