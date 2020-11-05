@@ -16,6 +16,8 @@ import activeDetailsPage from './js/filmDetailsPage';
 import openLib from './js/libraryPage';
 
 fetchPopularPage();
+// localStorage.setItem('filmsWatched', JSON.stringify([]));
+// localStorage.setItem('filmsQueue', JSON.stringify([]));
 
 function fetchHomePage(event) {
   event.preventDefault();

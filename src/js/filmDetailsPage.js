@@ -5,7 +5,6 @@ import refs from './refs';
 // import { selectedMovie } from './navigation'
 
 const selectedMovie = {};
-let obj = {};
 
 function selectMovie(event) {
     selectedMovie.id = event.target.dataset.id;
@@ -13,7 +12,6 @@ function selectMovie(event) {
     selectedMovie.title = event.target.alt;
     selectedMovie.year = event.target.dataset.date.split('-')[0];
     selectedMovie.vote = event.target.dataset.vote;
-    obj = {...selectedMovie};
     console.log('Selected movie:', selectedMovie);
 };
 let movieId;
@@ -36,18 +34,22 @@ const moviesQueue = [];
 function onclick(event) {
     if (event.target.classList.contains('addToWatchedBtn')) {
         console.log('Додаємо в переглянуті!');
-        watchedMovies.push(obj);
-        console.log(watchedMovies);
+        watchedMovies = JSON.parse(localStorage.getItem('filmsWatched'));
+        // const parsedWatched = JSON.parse(localStorage.getItem('filmsWatched'));
+        // parsedWatched.push({...selectedMovie});
+        watchedMovies.push({...selectedMovie});
+        // console.log(watchedMovies);
         localStorage.setItem('filmsWatched', JSON.stringify(watchedMovies));
-        const parsedWatched = JSON.parse(localStorage.getItem('filmsWatched'));
         console.log('Готовий масив для шаблонізатора:', parsedWatched);
     }
     if (event.target.classList.contains('addToQueueBtn')) {
         console.log('Цей подивимось на вихідних ;)');
-        moviesQueue.push(selectedMovie);
-        console.log(moviesQueue);
-        localStorage.setItem('filmsQueue', JSON.stringify(moviesQueue));
-        const parsedQueue = JSON.parse(localStorage.getItem('filmsQueue'));
+        moviesQueue = JSON.parse(localStorage.getItem('filmsQueue'));
+        // const parsedQueue = JSON.parse(localStorage.getItem('filmsQueue'));
+        // parsedQueue.push({...selectedMovie});
+        parsedQueue.push({...selectedMovie});
+        // console.log(moviesQueue);
+        localStorage.setItem('filmsQueue', JSON.stringify(parsedQueue));
         console.log('Готовий масив для шаблонізатора:', parsedQueue);
     }
 }

@@ -20,16 +20,23 @@ function openLib() {
   // const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&primary_release_year=2010&sort_by=vote_average.desc`;
   const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=18&primary_release_year=2014`;
 
-  fetch(url)
-  .then(response => response.json())
-    .then(({ results }) => {
-      console.log(results)
+  const parsedWatched = JSON.parse(localStorage.getItem('filmsWatched'));
+  const parsedQueue = JSON.parse(localStorage.getItem('filmsQueue'));
 
-      const markUp = libPageTempl(results);
+  const markUp = libPageTempl(parsedQueue);
       refs.libraryPage.insertAdjacentHTML('beforeend', markUp);
-    }
-    ) 
-    .catch(error => console.log(error));
+    
+     
+  // fetch(url)
+  // .then(response => response.json())
+  //   .then(({ results }) => {
+  //     console.log(results)
+
+  //     const markUp = libPageTempl(results);
+  //     refs.libraryPage.insertAdjacentHTML('beforeend', markUp);
+  //   }
+  //   ) 
+  //   .catch(error => console.log(error));
 }
 
 refs.homeRef.addEventListener('click', navigationPages.activeHomePage);
