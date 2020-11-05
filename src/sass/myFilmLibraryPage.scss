@@ -36,9 +36,9 @@
     // background-color: wheat;    
     
   }
-  a:hover{
-    background: #77c1bb;
-  }
+  // a:hover{
+  //   background: #77c1bb;
+  // }
 }
 
 .hidden{
@@ -48,7 +48,9 @@
 display: block;
 visibility: visible;
 }
-
+.activeLibBtn{
+  background: #77c1bb;
+}
 .lib-list {
   margin: 0 auto;
   padding: 0;
