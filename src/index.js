@@ -14,23 +14,41 @@ import searchAndPaginationHomePage from './js/searchAndPaginationHomePage';
 import navigationPages from './js/navigation';
 import activeDetailsPage from './js/filmDetailsPage';
 import openLib from './js/libraryPage';
+import { myInfo } from './js/notification';
 
 fetchPopularPage();
+myInfo();
+
+// let url = new URL(`http://localhost:4040/?query=${this.inputValue}&page=${this.pageNumber}`);
 
 function fetchHomePage(event) {
   event.preventDefault();
   
   const form = event.currentTarget;
   searchAndPaginationHomePage.query = form.elements.query.value;
-  
-  // form.reset();
+ 
   searchAndPaginationHomePage.resetPage();
   navigationPages.activeHomePage();
+
+  refs.logoRef.addEventListener("click", function(e) {
+  if (e.currentTarget === refs.logoRef) {
+    form.reset();
+    // URLSearchParams.delete('query')
+    // let url = new URL(`localhost:4040/?query=${this.inputValue}&page=${this.pageNumber}`);
+    // url.searchParams.delete('query');
+    // let params = new URLSearchParams(url.search.slice(1));
+
+    // Удалить параметр foo.
+    // params.delete('query'); //Строка запроса теперь: 'bar=2'
+  }
+});
 };
 
 function fetchPopularPage(event) {
   if (event) event.preventDefault();
+  
   fetchPopularMoviesList.resetPage();
+  // fetchPopularMoviesList.updateURL();
   navigationPages.createPopularMovieList();
 }
 
