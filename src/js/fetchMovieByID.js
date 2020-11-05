@@ -5,7 +5,10 @@ function fetchMovieByID(id) {
 
   return fetch(url)
     .then(response => response.json())
-    .catch(error => console.log(error));
+    .catch(error => {
+      console.log(error);
+      // pRef.innerHTML = 'error';
+    });
 }
 
 export default fetchMovieByID;
