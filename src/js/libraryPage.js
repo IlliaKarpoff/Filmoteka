@@ -9,7 +9,6 @@ import selectFilm from './navigation';
 // import {movieId} from './filmDetailsPage';
 
 
-
 import activeDetailsPage from './filmDetailsPage';
 // import { activeHomePage, activeLibraryPage, /*activeDetailsPage*/} from './3navigation';
 // import {createPopularMovieList} from '../index';
@@ -29,13 +28,12 @@ function openLib() {
       const parsedQueue = JSON.parse(localStorage.getItem('filmsQueue'));
 
       function openQueue() {
-        refs.libraryPage.innerHTML= "";
+        // refs.libraryPage.innerHTML ="";
+        refs.libList.innerHTML ="";
         const markUp = libPageTempl(parsedQueue);
-        refs.libraryPage.insertAdjacentHTML('beforeend', markUp);
+        refs.libList.insertAdjacentHTML('beforeend', markUp);
         console.log('клик по Queue');
-        console.log(refs.libWatchedBtn);
-
-        // refs.libWatchedBtn.classList.add('activLibBtn');
+        console.log(refs.libWatchedBtn);        
       }
 
       openQueue()
@@ -59,12 +57,19 @@ function openLib() {
 refs.libSection.addEventListener('click', event =>{
       if (event.target.classList.contains('lib_queue-link')) {        
         console.log('открыли список Queue!');
+        // добавляем класс с бекграундом на кнопку
+        
+        console.log(event.target);
+        // refs.libQueueBtn.style.backgroundColor = "blue";
          openQueue()
+        // event.target.classList.add('activeLibBtn');
+        
       }
       if (event.target.classList.contains('lib_watched-link')) {        
         console.log(' открыли список watched');
-        openWatch()
-        refs.libWatchedBtn.classList.add('activeLibBtn')
+        openWatch();
+        // refs.libQueueBtn.classList.remove('activeLibBtn');
+      
       }
   })
  
