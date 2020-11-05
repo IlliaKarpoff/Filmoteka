@@ -27,5 +27,6 @@ const refs = {
   upButton: document.querySelector('.up-btn'),
   colorLi: document.querySelector('.home-movie-list__item'),
   libSection:document.querySelector('#libraryPage'),
+  libWrapp_cont:document.querySelector('.lib-wrap'),
 }
 export default refs;

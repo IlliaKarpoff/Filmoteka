@@ -28,10 +28,10 @@ function openLib() {
       const parsedQueue = JSON.parse(localStorage.getItem('filmsQueue'));
 
       function openQueue() {
-        // refs.libraryPage.innerHTML ="";
-        refs.libList.innerHTML ="";
+        refs.libraryPage.innerHTML ="";
+        // refs.libList.innerHTML ="";
         const markUp = libPageTempl(parsedQueue);
-        refs.libList.insertAdjacentHTML('beforeend', markUp);
+        refs.libraryPage.insertAdjacentHTML('beforeend', markUp);
         console.log('клик по Queue');
         console.log(refs.libWatchedBtn);        
       }
@@ -44,11 +44,7 @@ function openLib() {
         refs.libraryPage.insertAdjacentHTML('beforeend', markUp);
         console.log('клик по watched');
       }
-      // const markUp = libPageTempl(results);
-      // refs.libraryPage.insertAdjacentHTML('beforeend', markUp);
-    // }
-    // ) 
-    // .catch(error => console.log(error));
+     
     refs.homeRef.addEventListener('click', navigationPages.activeHomePage);
     refs.libraryPage.addEventListener('click', activeDetailsPage);
 // refs.homeRef.addEventListener('click', navigationPages.createPopularMovieList);
@@ -57,12 +53,12 @@ function openLib() {
 refs.libSection.addEventListener('click', event =>{
       if (event.target.classList.contains('lib_queue-link')) {        
         console.log('открыли список Queue!');
-        // добавляем класс с бекграундом на кнопку
         
-        console.log(event.target);
+        // добавляем класс с бекграундом на кнопку        
+       
         // refs.libQueueBtn.style.backgroundColor = "blue";
-         openQueue()
-        // event.target.classList.add('activeLibBtn');
+        openQueue()
+        event.target.classList.add('activeLibBtn');
         
       }
       if (event.target.classList.contains('lib_watched-link')) {        
