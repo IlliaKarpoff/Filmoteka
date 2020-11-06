@@ -26,5 +26,7 @@ const refs = {
   searchForm: document.querySelector('.header__form'),
   inputForm: document.querySelector('.header__form-input'),
   upButton: document.querySelector('.up-btn'),
+  libListwWrap: document.querySelector('.lib-wrap'),
+  foo: document.querySelector('.lib_queue-item'),
 }
 export default refs;
