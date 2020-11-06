@@ -26,8 +26,10 @@ function showDetails(selectedMovie) {
 fetchMovieByID(selectedMovie.id)
 .then((film) => {
     refs.detailsPage.insertAdjacentHTML('beforeend', detailsPageTpl(film));
+    monitorButtonStatusText();
 })
-.then(monitorButtonStatusText());
+// .then(() => {
+// })
 }
 // - создаем функцию activeDetailsPage которая показывает страницу 
 // детальной отрисовки фильма и прячет остальные, функция принимает 
@@ -53,7 +55,7 @@ const activeDetailsPage = (event) => {
     showDetails(selectedMovie); // fetchMovieByID(movieId).then(updateDetailsPageMarkUp);
     refs.detailsPage.addEventListener('click', onclick);
 
-    // monitorButtonStatusText()
+    monitorButtonStatusText()
 };
 //- пишем функцию monitorButtonStatusText которая следит за состоянием 
 // (значок и текст в кнопке) читает  local storage по ключу filmsQueue
@@ -62,17 +64,21 @@ const activeDetailsPage = (event) => {
 // ; Delete from watched / Add to watched.
 function monitorButtonStatusText() {
     if (filmsWatched.find(film => film.id === selectedMovie.id)) {
-        console.log('its in lib');
-        refs.addToWatchedBtn.textContent = 'Delete from watched';
-        } else {
-        refs.addToWatchedBtn.textContent = 'Add to watched';
+        console.log('it`s in lib already');
+        let addToWatchedBtn = document.querySelector('.addToWatchedBtn');
+        addToWatchedBtn.textContent = 'Delete from watched';
+    } else {
+        // addToWatchedBtn.textContent = 'Add to watched';
         }
     if (filmsQueue.find(film => film.id === selectedMovie.id)) {
-        console.log('its in lib');
-        // addToQueueBtn.textContent = 'Delete from queue';
+        console.log('it`s in lib already');
+        let addToQueueBtn = document.querySelector('.addToQueueBtn');
+        addToQueueBtn.textContent = 'Delete from queue';
+    } else {
         // addToQueueBtn.textContent = 'Add to queue';
+        }
     }
-}
+
 
 // function lightBox(event) {
 //     if (event.target.classList.contains('film-poster')) {
@@ -97,7 +103,7 @@ function onclick(event) {
     if (event.target.classList.contains('addToWatchedBtn')) {
         filmsWatched = JSON.parse(localStorage.getItem('filmsWatched'));
         if (filmsWatched.find(film => film.id === selectedMovie.id)) {
-            monitorButtonStatusText()
+            // monitorButtonStatusText()
             return
         } else {
         notice({
@@ -108,11 +114,13 @@ function onclick(event) {
         filmsWatched.push({...selectedMovie});
         localStorage.setItem('filmsWatched', JSON.stringify(filmsWatched));
         console.log('Готовий масив для шаблонізатора:', filmsWatched);
+        let addToWatchedBtn = document.querySelector('.addToWatchedBtn');
+        addToWatchedBtn.textContent = 'Delete from Watched';
     }}
     if (event.target.classList.contains('addToQueueBtn')) {
         filmsQueue = JSON.parse(localStorage.getItem('filmsQueue'));
         if (filmsQueue.find(film => film.id === selectedMovie.id)) {
-            monitorButtonStatusText();
+            // monitorButtonStatusText();
             return
         } else {
         notice({
@@ -123,7 +131,9 @@ function onclick(event) {
         filmsQueue.push({...selectedMovie});
         localStorage.setItem('filmsQueue', JSON.stringify(filmsQueue));
         console.log('Готовий масив для шаблонізатора:', filmsQueue);
-    }}
+        let addToQueueBtn = document.querySelector('.addToQueueBtn');
+        addToQueueBtn.textContent = 'Delete from queue';
+}}
 }
 export default activeDetailsPage;
 
