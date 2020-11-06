@@ -12,6 +12,9 @@
 }
 .data-wrapper {
 }
+td {
+  width: 58%;
+}
 .film-title {
   font-size: 20px;
   font-family: 'Roboto';
@@ -28,6 +31,7 @@
   color: rgba(0, 0, 0, 0.541);
   line-height: 1.2;
   opacity: 0.6;
+  width: 500px;
 
   &:nth-child(odd) {
     background-color: $accent-color;
