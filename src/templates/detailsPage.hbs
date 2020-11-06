@@ -1,15 +1,12 @@
 <article class="film-card">
     <img class="film-poster" src="https://image.tmdb.org/t/p/original/{{poster_path}}" alt="{{title}}" data-id="{{id}}"
         data-date="{{release_date}}" data-vote="{{vote_average}}">
-    {{!-- width="272" height="402"> --}}
-    <!-- вставить рис.768пх width="356" height="524" -->
-    <!-- вставить рис.1024пх width="428" height="630" -->
     <div class="data-wrapper">
         <h2 class="film-title">{{title}} ({{release_date}})</h2>
         <table class="film-table">
             <tr class="film-data">
-                <td>vote / votes </td>
-                <td>{{ vote_average}} / {{vote_count}}</td>
+                <td class="first">vote / votes </td>
+                <td class="second">{{ vote_average}} / {{vote_count}}</td>
             </tr>
             <tr class="film-data">
                 <td>popularity </td>
@@ -31,16 +28,10 @@
         <h3 class="film-description-heading">About</h3>
         <p class="film-description">{{overview}}</p>
         <button class="button addToWatchedBtn" type="button">
-            <span class="addToWatchedIcon"></span>
-            {{!-- <span class="addToWatchedText"> --}}
             Add to watched
-            {{!-- </span> --}}
         </button>
         <button class="button addToQueueBtn" type="button">
-            <span class="addToQueueIcon"></span>
-            {{!-- <span class="addToQueueText"> --}}
             Add to queue
-            {{!-- </span> --}}
         </button>
     </div>
 </article>
