@@ -27,6 +27,6 @@ const refs = {
   inputForm: document.querySelector('.header__form-input'),
   upButton: document.querySelector('.up-btn'),
   libListwWrap: document.querySelector('.lib-wrap'),
-  foo: document.querySelector('.lib_queue-item'),
+  libBtnList: document.querySelector('.lib_btn-list'),
 }
 export default refs;

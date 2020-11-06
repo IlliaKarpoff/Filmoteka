@@ -47,6 +47,7 @@ function createPopularMovieList() {
   cleanPopularPage();
   cleanDetailsPage();
   // cleanLibraryPage();
+  refs.libBtnList.classList.add('is-hidden');
   refs.pageBtn.textContent = fetchPopularMoviesList.pageNumber;
   fetchPopularMoviesList.fetchPopularMovies()
     .then(updatePopularMovieMarkUp);
@@ -73,6 +74,8 @@ function activeHomePage() {
   cleanHomePage();
   cleanDetailsPage();
   // cleanLibraryPage();
+  // refs.libListwWrap.classList.add('is-hidden');
+  refs.libraryPage.classList.add('is-hidden');
   if (!searchAndPaginationHomePage.inputValue) {
     return createPopularMovieList(),
     myAlert();
@@ -106,6 +109,7 @@ function activeLibraryPage() {
   refs.homePage.classList.add('is-hidden');
   refs.searchForm.classList.add('is-hidden');
   refs.libraryPage.classList.remove('is-hidden');
+  refs.libBtnList.classList.remove('is-hidden');
 //   drawQueueFilmList();
 //   activeButton();
 //   refs.libWatchedBtn.addEventListener('click', handlebuttonW)
