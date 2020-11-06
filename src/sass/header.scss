@@ -25,14 +25,19 @@
 
 .header__logo-img {
   margin-right: 10px;
+  margin-left: 22px;
 }
 
 .header__logo-text {
+  color: rgba(55, 44, 72, 0.871);
   margin: 0;
   text-align: center;
   font-family: 'Roboto', 'Arial', sans-serif;
   font-weight: 500;
   display: none;
+  &:hover{
+    color: rgb(0, 0, 0);
+  }
 }
 
 .section-container {
@@ -49,7 +54,7 @@
   // height: 68px;
   text-align: center;
   cursor: pointer;
-  color: #000;
+  color: rgba(55, 44, 72, 0.702);
   font-family: 'Roboto', 'Arial', sans-serif;
   font-weight: 500;
   padding: 14px 0;
@@ -60,7 +65,8 @@
 
 .header__home-link:hover,
 .header__lib-link:hover {
-  border-bottom: 3px solid #000;
+  // border-bottom: 3px solid #000;
+  color: #000;
   // content: '';
   // display: block;
   // width: 100%;
@@ -138,4 +144,9 @@
     font-size: 20px;
     display: inline-block;
   }
+}
+
+.activeBtnHeader {
+  border-bottom: 3px solid #000;
+  color: #000;
 }

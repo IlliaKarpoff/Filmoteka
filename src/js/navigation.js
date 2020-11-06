@@ -75,6 +75,8 @@ function activeHomePage() {
   cleanDetailsPage();
   // cleanLibraryPage();
   // refs.libListwWrap.classList.add('is-hidden');
+  refs.lib.classList.remove('activeBtnHeader');
+  refs.homeRef.classList.add('activeBtnHeader');
   refs.libraryPage.classList.add('is-hidden');
   if (!searchAndPaginationHomePage.inputValue) {
     return createPopularMovieList(),
@@ -110,6 +112,8 @@ function activeLibraryPage() {
   refs.searchForm.classList.add('is-hidden');
   refs.libraryPage.classList.remove('is-hidden');
   refs.libBtnList.classList.remove('is-hidden');
+  refs.lib.classList.add('activeBtnHeader');
+  refs.homeRef.classList.remove('activeBtnHeader');
 //   drawQueueFilmList();
 //   activeButton();
 //   refs.libWatchedBtn.addEventListener('click', handlebuttonW)
