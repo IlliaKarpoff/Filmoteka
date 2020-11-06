@@ -79,16 +79,6 @@ function monitorButtonStatusText() {
         }
     }
 
-
-// function lightBox(event) {
-//     if (event.target.classList.contains('film-poster')) {
-//       console.log(event.target.src);
-//         const instance = basicLightbox.create(
-//         `<img src=${event.target.src} width="800" height="600">`,
-//         );
-//         instance.show();
-//     }
-// };
 let filmsWatched = [];
 let filmsQueue = [];
 
@@ -98,7 +88,6 @@ function onclick(event) {
         `<img src=${event.target.src} width="800" height="600">`,
         );
         instance.show();
-        // console.log(event.target.src);
     };
     if (event.target.classList.contains('addToWatchedBtn')) {
         filmsWatched = JSON.parse(localStorage.getItem('filmsWatched'));
