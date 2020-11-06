@@ -28,8 +28,6 @@ fetchMovieByID(selectedMovie.id)
     refs.detailsPage.insertAdjacentHTML('beforeend', detailsPageTpl(film));
     monitorButtonStatusText();
 })
-// .then(() => {
-// })
 }
 // - создаем функцию activeDetailsPage которая показывает страницу 
 // детальной отрисовки фильма и прячет остальные, функция принимает 
@@ -55,7 +53,7 @@ const activeDetailsPage = (event) => {
     showDetails(selectedMovie); // fetchMovieByID(movieId).then(updateDetailsPageMarkUp);
     refs.detailsPage.addEventListener('click', onclick);
 
-    monitorButtonStatusText()
+    // monitorButtonStatusText()
 };
 //- пишем функцию monitorButtonStatusText которая следит за состоянием 
 // (значок и текст в кнопке) читает  local storage по ключу filmsQueue
@@ -63,19 +61,21 @@ const activeDetailsPage = (event) => {
 // Delete from queue / Add to queue 
 // ; Delete from watched / Add to watched.
 function monitorButtonStatusText() {
+    filmsWatched = JSON.parse(localStorage.getItem('filmsWatched'));
+    let addToWatchedBtn = document.querySelector('.addToWatchedBtn');
     if (filmsWatched.find(film => film.id === selectedMovie.id)) {
         console.log('it`s in lib already');
-        let addToWatchedBtn = document.querySelector('.addToWatchedBtn');
-        addToWatchedBtn.textContent = 'Delete from watched';
+        addToWatchedBtn.textContent = 'Delete from Watched';
     } else {
-        // addToWatchedBtn.textContent = 'Add to watched';
+        addToWatchedBtn.textContent = 'Add to Watched';
         }
+    filmsQueue = JSON.parse(localStorage.getItem('filmsQueue'));
+    let addToQueueBtn = document.querySelector('.addToQueueBtn');
     if (filmsQueue.find(film => film.id === selectedMovie.id)) {
         console.log('it`s in lib already');
-        let addToQueueBtn = document.querySelector('.addToQueueBtn');
-        addToQueueBtn.textContent = 'Delete from queue';
+        addToQueueBtn.textContent = 'Delete from Queue';
     } else {
-        // addToQueueBtn.textContent = 'Add to queue';
+        addToQueueBtn.textContent = 'Add to Queue';
         }
     }
 
@@ -91,9 +91,17 @@ function onclick(event) {
     };
     if (event.target.classList.contains('addToWatchedBtn')) {
         filmsWatched = JSON.parse(localStorage.getItem('filmsWatched'));
+        
         if (filmsWatched.find(film => film.id === selectedMovie.id)) {
-            // monitorButtonStatusText()
-            return
+        notice({
+        text: 'Movie deleted from Watched',
+        delay: 1500,
+        });
+console.log('it`s in lib already');
+        filmsWatched = filmsWatched.filter(film => film.id !== selectedMovie.id);
+        let addToWatchedBtn = document.querySelector('.addToWatchedBtn');
+        addToWatchedBtn.textContent = 'Add to Watched';
+        // monitorButtonStatusText();
         } else {
         notice({
         text: 'Movie added to Watched',
@@ -101,16 +109,25 @@ function onclick(event) {
         });
         console.log('Додаємо в переглянуті!');
         filmsWatched.push({...selectedMovie});
+    }
         localStorage.setItem('filmsWatched', JSON.stringify(filmsWatched));
         console.log('Готовий масив для шаблонізатора:', filmsWatched);
         let addToWatchedBtn = document.querySelector('.addToWatchedBtn');
         addToWatchedBtn.textContent = 'Delete from Watched';
-    }}
+}
     if (event.target.classList.contains('addToQueueBtn')) {
         filmsQueue = JSON.parse(localStorage.getItem('filmsQueue'));
+
         if (filmsQueue.find(film => film.id === selectedMovie.id)) {
-            // monitorButtonStatusText();
-            return
+        notice({
+        text: 'Movie deleted from Queue',
+        delay: 1500,
+        });
+console.log('it`s in lib already');
+        filmsQueue = filmsQueue.filter(film => film.id !== selectedMovie.id);
+        let addToQueueBtn = document.querySelector('.addToQueueBtn');
+        addToQueueBtn.textContent = 'Add to Queue';
+        // monitorButtonStatusText();
         } else {
         notice({
         text: 'Movie added to Queue',
@@ -118,54 +135,40 @@ function onclick(event) {
         });
         console.log('Цей фільм подивимось на вихідних ;)');
         filmsQueue.push({...selectedMovie});
+    }
         localStorage.setItem('filmsQueue', JSON.stringify(filmsQueue));
         console.log('Готовий масив для шаблонізатора:', filmsQueue);
         let addToQueueBtn = document.querySelector('.addToQueueBtn');
-        addToQueueBtn.textContent = 'Delete from queue';
-}}
+        addToQueueBtn.textContent = 'Delete from Queue';
+}
 }
 export default activeDetailsPage;
 
-
 //- пишем функцию toggleToQueue (будет добавлять или удалять фильмы 
+function toggleToQueue() {
 // из очереди просмотра), которая создает переменную массива в очереди,
 //  читает local storage по ключу filmsQueue если результат не пустой
 //  то пушит элементы в нашу переменную, 
+filmsQueue = JSON.parse(localStorage.getItem('filmsQueue'));
 // ! также функция вплотную работает с глобальной переменной selectFilm,
 //  и если selectFilm содержиться в нашей переменной то убираем его 
+if (filmsQueue.includes(selectedMovie)) {
+    console.log('delete');
+} else {
+    filmsQueue.push({...selectedMovie});
+}
 // оттуда иначе добавляем selectFilm в нашу переменную, 
 // потом эта функция кладет нашу переменную в  local storage, 
+localStorage.setItem('filmsQueue', JSON.stringify(filmsQueue));
 // запускает в конце себя функцию monitorButtonStatusText;
-
-// // функцию toggleToQueue (будет добавлять или удалять фильмы из очереди просмотра)
-// function toggleToQueue() {
-//     const arr = []
-// }
-// filmsQueue 
-// f toggleToWatched 
-// filmsWatched
-
-// const filmsQueue = {
-//   id: movieId,
-//   title: original_title,
-//   year: release_date,
-//   img: backdrop_path,
-// };
-
-// localStorage.setItem('filmsQueue', JSON.stringify(settings));
-
-// const savedQueue = localStorage.getItem('filmsQueue');
-// const parsedQueue = JSON.parse(savedQueue);
-
-// console.log(parsedQueue);
-
-// function showDetails(selectFilm) {
-
-// }
+// monitorButtonStatusText()
+}
 //- пишем функцию toggleToWatched (будет добавлять или удалять фильмы 
 // из просмотренных), суть ее работы один в один как toggleToQueue
 //   только работает с local storage по ключу filmsWatched.
 
+// function showDetails(selectFilm) {
+    // }
 // * из DOM достукивается до нужных кнопок участник 3 и вешает функции  toggleToQueue  и toggleToWatched слушателями на страницу деталей и удаляет там где не нужно.
 
 
