@@ -4,16 +4,15 @@
   flex-direction: column;
 }
 .film-poster {
-  /* display: block; */
-  /* margin: auto; */
   width: 274px;
   height: 400px;
   margin-bottom: 20px;
 }
-.data-wrapper {
+.first {
+  width: 100px;
 }
-td {
-  width: 58%;
+.second {
+  width: 200px;
 }
 .film-title {
   font-size: 20px;
@@ -69,16 +68,26 @@ td {
 }
 button > span {
   margin-right: 5px;
-  width: 16px;
-  height: 16px;
+}
+.addToWatchedBtn::before {
+  content: '';
   display: block;
+  width: 26px;
+  height: 17px;
   background-repeat: no-repeat;
-}
-.addToWatchedIcon {
+  background-size: cover;
   background-image: url(../images/video-watched.png);
+  margin-right: 8px;
 }
-.addToQueueIcon {
+.addToQueueBtn::before {
+  content: '';
+  display: block;
+  width: 17px;
+  height: 17px;
+  background-repeat: no-repeat;
+  background-size: cover;
   background-image: url(../images/calendar-queue.png);
+  margin-right: 8px;
 }
 
 @media (min-width: 768px) {
@@ -90,11 +99,23 @@ button > span {
     height: 528px;
     margin-right: 20px;
   }
+  .first {
+    width: 120px;
+  }
+  .second {
+    width: 270px;
+  }
 }
 
 @media (min-width: 1024px) {
   .film-poster {
     width: 428px;
     height: 632px;
+  }
+  .first {
+    width: 160px;
+  }
+  .second {
+    width: 1200px;
   }
 }
