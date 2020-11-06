@@ -13,9 +13,19 @@ import searchAndPaginationHomePage from './js/searchAndPaginationHomePage';
 import navigationPages from './js/navigation';
 import activeDetailsPage from './js/filmDetailsPage';
 import openLib from './js/libraryPage';
+import openQueue from './js/libraryPage';
 import { myInfo } from './js/notification';
-
+// openQueue()
 fetchPopularPage();
+checkLS();
+
+function checkLS() {
+if (!localStorage.getItem('filmsWatched')) {
+  localStorage.setItem('filmsWatched', JSON.stringify([]));
+}
+if (!localStorage.getItem('filmsQueue')) {
+  localStorage.setItem('filmsQueue', JSON.stringify([]));
+}};
 
 function fetchHomePage(event) {
   event.preventDefault();
@@ -50,4 +60,4 @@ refs.upButton.addEventListener('click', upButtonHandler);
 
 
 // console.log('в индекс вне ф-ии:',movieId);
-console.log(refs.libWatchedBtn);
+// console.log(refs.libWatchedBtn);

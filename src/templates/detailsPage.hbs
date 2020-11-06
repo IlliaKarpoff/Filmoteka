@@ -8,22 +8,22 @@
         <h2 class="film-title">{{title}} ({{release_date}})</h2>
         <table class="film-table">
             <tr class="film-data">
-                <td>vote / votes</td>
-                <td>{{vote_average}} / {{vote_count}}</td>
+                <td>vote / votes </td>
+                <td>{{ vote_average}} / {{vote_count}}</td>
             </tr>
             <tr class="film-data">
-                <td>popularity</td>
-                <td>{{popularity}}</td>
+                <td>popularity </td>
+                <td>{{ popularity}}</td>
             </tr>
             <tr class="film-data">
-                <td>original title</td>
-                <td>{{title}}</td>
+                <td>original title </td>
+                <td>{{ title}}</td>
             </tr>
             <tr class="film-data">
-                <td>genre</td>
+                <td>genre </td>
                 <td>
                     {{#each genres}}
-                    {{name}}
+                    {{ name }}
                     {{/each}}
                 </td>
             </tr>
@@ -33,13 +33,13 @@
         <button class="button addToWatchedBtn" type="button">
             <span class="addToWatchedIcon"></span>
             {{!-- <span class="addToWatchedText"> --}}
-            Add fo watched
+            Add to watched
             {{!-- </span> --}}
         </button>
         <button class="button addToQueueBtn" type="button">
             <span class="addToQueueIcon"></span>
             {{!-- <span class="addToQueueText"> --}}
-            Add fo queue
+            Add to queue
             {{!-- </span> --}}
         </button>
     </div>
