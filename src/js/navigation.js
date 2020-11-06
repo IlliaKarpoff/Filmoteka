@@ -46,7 +46,7 @@ function createPopularMovieList() {
   cleanHomePage();
   cleanPopularPage();
   cleanDetailsPage();
-  cleanLibraryPage();
+  // cleanLibraryPage();
   refs.pageBtn.textContent = fetchPopularMoviesList.pageNumber;
   fetchPopularMoviesList.fetchPopularMovies()
     .then(updatePopularMovieMarkUp);
@@ -72,7 +72,7 @@ function activeHomePage() {
   cleanPopularPage();
   cleanHomePage();
   cleanDetailsPage();
-  cleanLibraryPage();
+  // cleanLibraryPage();
   if (!searchAndPaginationHomePage.inputValue) {
     return createPopularMovieList(),
     myAlert();
@@ -102,7 +102,7 @@ function activeLibraryPage() {
   cleanHomePage();
   cleanPopularPage();
   cleanDetailsPage();
-  cleanLibraryPage();
+  // cleanLibraryPage();
   refs.homePage.classList.add('is-hidden');
   refs.searchForm.classList.add('is-hidden');
   refs.libraryPage.classList.remove('is-hidden');

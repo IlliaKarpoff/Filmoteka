@@ -6,6 +6,7 @@ import {toStorage, fromStorage} from './utilities';
 import selectMovie from './filmDetailsPage';
 import selectedMovie from './filmDetailsPage';
 import selectFilm from './navigation';
+import { myError } from './notification'; 
 // import {movieId} from './filmDetailsPage';
 
 
@@ -28,20 +29,24 @@ function openLib() {
       const parsedQueue = JSON.parse(localStorage.getItem('filmsQueue'));
 
       function openQueue() {
-        refs.libraryPage.innerHTML ="";
-        // refs.libList.innerHTML ="";
+        // refs.libraryPage.innerHTML ="";
+        refs.libListwWrap.innerHTML ="";
         const markUp = libPageTempl(parsedQueue);
-        refs.libraryPage.insertAdjacentHTML('beforeend', markUp);
+        refs.libListwWrap.insertAdjacentHTML('beforeend', markUp);
         console.log('клик по Queue');
-        console.log(refs.libWatchedBtn);        
+        console.log(refs.libWatchedBtn); 
+        refs.libQueueBtn.classList.add('activeLibBtn');
+        refs.libWatchedBtn.classList.remove('activeLibBtn');
+               
       }
 
       openQueue()
       
       function openWatch() {
-        refs.libraryPage.innerHTML= "";
+        refs.libListwWrap.innerHTML= "";
         const markUp = libPageTempl(parsedWatched);
-        refs.libraryPage.insertAdjacentHTML('beforeend', markUp);
+        // refs.libListwWrap.innerHTML( markUp);
+        refs.libListwWrap.insertAdjacentHTML('beforeend', markUp);
         console.log('клик по watched');
       }
      
@@ -50,21 +55,24 @@ function openLib() {
 // refs.homeRef.addEventListener('click', navigationPages.createPopularMovieList);
 
 
-refs.libSection.addEventListener('click', event =>{
+// refs.libSection.addEventListener('click', event =>{
+refs.libraryPage.addEventListener('click', event =>{
       if (event.target.classList.contains('lib_queue-link')) {        
         console.log('открыли список Queue!');
         openQueue()
         // добавляем класс с бекграундом на кнопку        
        
-        // refs.libQueueBtn.style.backgroundColor = "blue";
-        
-        event.target.classList.add('activeLibBtn');
+        // refs.libQueueBtn.style.backgroundColor = "#77c1bb";
+        refs.libQueueBtn.classList.add('activeLibBtn');
+        refs.libWatchedBtn.classList.remove('activeLibBtn');
+        // event.target.classList.add('activeLibBtn');
         
       }
       if (event.target.classList.contains('lib_watched-link')) {        
         console.log(' открыли список watched');
         openWatch();
-        // refs.libQueueBtn.classList.remove('activeLibBtn');
+        refs.libQueueBtn.classList.remove('activeLibBtn');
+        refs.libWatchedBtn.classList.add('activeLibBtn');
       
       }
   })

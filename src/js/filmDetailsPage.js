@@ -6,9 +6,8 @@ import { notice } from './notification';
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
 // import { selectedMovie } from './navigation'
-
+let movieId;
 const selectedMovie = {};
-let obj = {};
 
 function selectMovie(event) {
     selectedMovie.id = event.target.dataset.id;
@@ -16,14 +15,33 @@ function selectMovie(event) {
     selectedMovie.title = event.target.alt;
     selectedMovie.year = event.target.dataset.date.split('-')[0];
     selectedMovie.vote = event.target.dataset.vote;
-    obj = {...selectedMovie};
     console.log('Selected movie:', selectedMovie);
 };
-
-
-
-
-let movieId;
+//- пишем функцию showDetails которая принимает параметром selectedMovie
+//  (глобальная переменная - объект, которая создана в задаче номер 3)
+//  и рендерит всю разметку согласно макета, 
+//  в этой функции запускается функция monitorButtonStatusText.
+function showDetails(selectedMovie) {
+//   const markUp = detailsPageTpl(result); 
+fetchMovieByID(selectedMovie.id)
+.then((film) => {
+    refs.detailsPage.insertAdjacentHTML('beforeend', detailsPageTpl(film));
+    monitorButtonStatusText();
+})
+// .then(() => {
+// })
+}
+// - создаем функцию activeDetailsPage которая показывает страницу 
+// детальной отрисовки фильма и прячет остальные, функция принимает 
+// два параметра movieId и itsLibraryFilm (это bool), и в зависимости 
+// от того это выбранный фильм с домашней страницы или из библиотеки, 
+//заполняет глобальную переменную selectFilm нужным объектом и запускает
+// функцию  showDetails c параметром selectFilm который они заполнили
+//   одними или другими данными (которую сделает 4й участник), 
+//   вешает слушателей на кнопки добавления/удаления фильмов в очередь 
+//   просмотра и добавления/удаления фильмов из просмотренных со страницы
+//    detailsPage и удаляет ненужных всех слушателей 
+//    (таких 4 во всем проекте не нужных на этой странице); 
 const activeDetailsPage = (event) => {
     if (event.target.nodeName !== 'IMG') { return }
     refs.detailsPage.innerHTML = '';
@@ -34,12 +52,35 @@ const activeDetailsPage = (event) => {
 
     selectMovie(event);
 
-    fetchMovieByID(movieId).then(updateDetailsPageMarkUp);
+    showDetails(selectedMovie); // fetchMovieByID(movieId).then(updateDetailsPageMarkUp);
     refs.detailsPage.addEventListener('click', onclick);
-};
 
-const watchedMovies = [];
-const moviesQueue = [];
+    monitorButtonStatusText()
+};
+//- пишем функцию monitorButtonStatusText которая следит за состоянием 
+// (значок и текст в кнопке) читает  local storage по ключу filmsQueue
+//  и  filmsWatched и меняет текст и значки в кнопках: 
+// Delete from queue / Add to queue 
+// ; Delete from watched / Add to watched.
+function monitorButtonStatusText() {
+    if (filmsWatched.find(film => film.id === selectedMovie.id)) {
+        console.log('it`s in lib already');
+        let addToWatchedBtn = document.querySelector('.addToWatchedBtn');
+        addToWatchedBtn.textContent = 'Delete from watched';
+    } else {
+        // addToWatchedBtn.textContent = 'Add to watched';
+        }
+    if (filmsQueue.find(film => film.id === selectedMovie.id)) {
+        console.log('it`s in lib already');
+        let addToQueueBtn = document.querySelector('.addToQueueBtn');
+        addToQueueBtn.textContent = 'Delete from queue';
+    } else {
+        // addToQueueBtn.textContent = 'Add to queue';
+        }
+    }
+
+let filmsWatched = [];
+let filmsQueue = [];
 
 function onclick(event) {
     if (event.target.classList.contains('film-poster')) {
@@ -49,47 +90,42 @@ function onclick(event) {
         instance.show();
     };
     if (event.target.classList.contains('addToWatchedBtn')) {
-        console.log('Додаємо в переглянуті!');
+        filmsWatched = JSON.parse(localStorage.getItem('filmsWatched'));
+        if (filmsWatched.find(film => film.id === selectedMovie.id)) {
+            // monitorButtonStatusText()
+            return
+        } else {
         notice({
         text: 'Movie added to Watched',
         delay: 1500,
         });
-        watchedMovies.push(obj);
-        console.log(watchedMovies);
-        localStorage.setItem('filmsWatched', JSON.stringify(watchedMovies));
-        const parsedWatched = JSON.parse(localStorage.getItem('filmsWatched'));
-        console.log('Готовий масив для шаблонізатора:', parsedWatched);
-    }
+        console.log('Додаємо в переглянуті!');
+        filmsWatched.push({...selectedMovie});
+        localStorage.setItem('filmsWatched', JSON.stringify(filmsWatched));
+        console.log('Готовий масив для шаблонізатора:', filmsWatched);
+        let addToWatchedBtn = document.querySelector('.addToWatchedBtn');
+        addToWatchedBtn.textContent = 'Delete from Watched';
+    }}
     if (event.target.classList.contains('addToQueueBtn')) {
-        console.log('Цей подивимось на вихідних ;)');
+        filmsQueue = JSON.parse(localStorage.getItem('filmsQueue'));
+        if (filmsQueue.find(film => film.id === selectedMovie.id)) {
+            // monitorButtonStatusText();
+            return
+        } else {
         notice({
         text: 'Movie added to Queue',
         delay: 1500,
         });
-        moviesQueue.push(selectedMovie);
-        console.log(moviesQueue);
-        localStorage.setItem('filmsQueue', JSON.stringify(moviesQueue));
-        const parsedQueue = JSON.parse(localStorage.getItem('filmsQueue'));
-        console.log('Готовий масив для шаблонізатора:', parsedQueue);
-    }
+        console.log('Цей фільм подивимось на вихідних ;)');
+        filmsQueue.push({...selectedMovie});
+        localStorage.setItem('filmsQueue', JSON.stringify(filmsQueue));
+        console.log('Готовий масив для шаблонізатора:', filmsQueue);
+        let addToQueueBtn = document.querySelector('.addToQueueBtn');
+        addToQueueBtn.textContent = 'Delete from queue';
+}}
 }
 export default activeDetailsPage;
 
-//- пишем функцию monitorButtonStatusText которая следит за состоянием 
-// (значок и текст в кнопке) читает  local storage по ключу filmsQueue
-//  и  filmsWatched и меняет текст и значки в кнопках: 
-// Delete from queue / Add to queue 
-// ; Delete from watched / Add to watched.
-function monitorButtonStatusText() {
-    const filmsWatched = localStorage.getItem('filmsWatched');
-    // addToWatchedBtn.textContent = 'Delete from watched';
-    // addToWatchedBtn.textContent = 'Add to watched';
-    const filmsQueue = localStorage.getItem('filmsQueue');
-    // addToQueueBtn.textContent = 'Delete from queue';
-    // addToQueueBtn.textContent = 'Add to queue';
-    // console.log(filmsWatched);
-    
-}
 
 //- пишем функцию toggleToQueue (будет добавлять или удалять фильмы 
 // из очереди просмотра), которая создает переменную массива в очереди,
@@ -130,15 +166,6 @@ function monitorButtonStatusText() {
 // из просмотренных), суть ее работы один в один как toggleToQueue
 //   только работает с local storage по ключу filmsWatched.
 
-//- пишем функцию showDetails которая принимает параметром selectFilm
-//  (глобальная переменная - объект, которая создана в задаче номер 3)
-//  и рендерит всю разметку согласно макета, 
-//  в этой функции запускается функция monitorButtonStatusText.
-function showDetails(selectFilm) {
-//   const markUp = detailsPageTpl(result); 
-  refs.detailsPage.insertAdjacentHTML('beforeend', detailsPageTpl(selectFilm));
-  monitorButtonStatusText();
-}
 // * из DOM достукивается до нужных кнопок участник 3 и вешает функции  toggleToQueue  и toggleToWatched слушателями на страницу деталей и удаляет там где не нужно.
 
 

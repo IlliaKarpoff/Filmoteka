@@ -1,26 +1,29 @@
-.lib{
+.lib {
   margin: 0 auto;
   width: 100%;
-  .lib-wrap{
+  .lib-wrap {
     margin: 0 auto;
     // width: max-content;
-    background-color: #F3F6F6;
+    background-color: #f3f6f6;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    
-    
   }
 }
-.lib_btn-list{
+.lib_btn-list {
   display: flex;
-    background-color: rgb(243, 246, 246);
-    align-items: center;
-    vertical-align: middle; 
-    justify-content: center;
-    margin: 13px 0;
-    box-shadow: 0px 5px 9px 1px rgba(0, 0, 0, 0.23);
-  a{
+  background-color: rgb(243, 246, 246);
+  align-items: center;
+  vertical-align: middle;
+  justify-content: center;
+  margin: 13px 0;
+  box-shadow: 0px 5px 9px 1px rgba(0, 0, 0, 0.23);
+  .lib_btn-list-item {
+    background-image: url(../images/line.png);
+    background-repeat: no-repeat;
+    background-position: bottom;
+  }
+  a {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -29,29 +32,29 @@
     font-size: 16px;
     color: black;
     // border-bottom: 1px solid black;
-    font-family: AdobeInvisFont,Roboto-Regular,MyriadPro-Regular, sans-serif;
-    background-image: url(../images/line.png);
-    background-repeat: no-repeat;
-    background-position: bottom;
-    // background-color: wheat;    
-    
+    font-family: AdobeInvisFont, Roboto-Regular, MyriadPro-Regular, sans-serif;
+    // background-image: url(../images/line.png);
+    // background-repeat: no-repeat;
+    // background-position: bottom;
+    // background-color: wheat;
   }
   // a:hover{
   //   background: #77c1bb;
   // }
 }
 
-.hidden{
+.hidden {
   display: none;
 }
-.visible{
-display: block;
-visibility: visible;
+.visible {
+  display: block;
+  visibility: visible;
 }
-.activeLibBtn{
+.activeLibBtn {
   background: #77c1bb;
+  background-image: none;
 }
-.lib-listitem-text{
+.lib-listitem-text {
   // background-color: red;
 }
 .lib-list {
@@ -92,15 +95,15 @@ visibility: visible;
       padding: 6px 14px;
       border-radius: 10px;
       background-color: rgb(255, 255, 255);
-      box-shadow: inset 0px 0px 2.79px 0.21px rgba(0, 0, 0, 0.35),inset 0px 0px 2.64px 1.36px rgba(0, 0, 0, 0.35);
+      box-shadow: inset 0px 0px 2.79px 0.21px rgba(0, 0, 0, 0.35),
+        inset 0px 0px 2.64px 1.36px rgba(0, 0, 0, 0.35);
       font-size: 16px;
-      font-family: "Roboto";
+      font-family: 'Roboto';
       color: rgb(0, 0, 0);
       line-height: 0.933;
     }
   }
 }
-
 
 @media (min-width: 768px) {
   .lib-list {
